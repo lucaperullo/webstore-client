@@ -12,7 +12,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 export default function Discover() {
   return (
-    <Box as="div" height="100%" ml="60">
+    <Box as="div" height="100%" ml={{ base: 0, md: 60 }}>
       <Box mb="2">
         <Swiper
           autoplay={{
