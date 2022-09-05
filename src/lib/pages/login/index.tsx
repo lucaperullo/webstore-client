@@ -14,6 +14,7 @@ import {
   useColorModeValue,
   InputGroup,
   InputRightElement,
+  useToast,
 } from "@chakra-ui/react";
 import { useStateValue } from "../../../context/stateProvider";
 import { useState } from "react";
@@ -22,6 +23,7 @@ import FacebookButton from "lib/components/facebookButton";
 import GoogleButton from "lib/components/googleButton";
 
 export default function SignIn() {
+  const toast = useToast();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -60,6 +62,20 @@ export default function SignIn() {
 
       console.log(state);
       navigate("/");
+    } else {
+      toast({
+        title: "Error",
+        description: "Invalid email or password",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
+      setTimeout(() => {
+        dispatch({
+          type: "SET_LOADING",
+          payload: false,
+        });
+      }, 1000);
     }
   };
 
