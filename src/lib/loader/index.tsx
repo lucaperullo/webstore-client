@@ -10,17 +10,6 @@ export default function Loader() {
       payload: false,
     });
   }, []);
-  useEffect(() => {
-    let cookies = document.cookie;
-    if (cookies) {
-      console.log(cookies);
-      let cookie = cookies.split(";");
-      let token = cookie[0].split("=")[1];
-      if (token) {
-        localStorage.setItem("token", token);
-      }
-    }
-  }, []);
 
   return (
     <Box

@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import {
   Box,
   useColorModeValue,
@@ -15,7 +15,17 @@ export default function Navbar({ children }: { children: ReactNode }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [state, dispatch] = useStateValue();
   let { user } = state;
-
+  useEffect(() => {
+    let cookies = document.cookie;
+    if (cookies) {
+      console.log(cookies);
+      let cookie = cookies.split(";");
+      let token = cookie[0].split("=")[1];
+      if (token) {
+        localStorage.setItem("token", token);
+      }
+    }
+  }, []);
   return (
     <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
       <SidebarContent
