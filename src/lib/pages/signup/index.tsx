@@ -26,7 +26,7 @@ export default function SignupCard() {
   const [password, setPassword] = useState("");
   let history = useNavigate();
   const signup = async () => {
-    let url = import.meta.env.VITE_BASE_URL + "/users/register";
+    let url = import.meta.env.VITE_BASE_URL + "users/register";
     let data = {
       name,
       surname,
