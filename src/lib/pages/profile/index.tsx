@@ -45,6 +45,7 @@ export default function Profile() {
       let response: any = await fetch(url, {
         method: "POST",
         body: data,
+        credentials: "include",
       });
       let image: any = await response.json().resp.image;
       dispatch({
