@@ -41,7 +41,7 @@ export default function Profile() {
       let data = new FormData();
       data.append("image", newImage);
 
-      let url = import.meta.env.VITE_BASE_URL + "/users/picture/" + user._id;
+      let url = import.meta.env.VITE_BASE_URL + "users/picture/" + user._id;
       let response: any = await fetch(url, {
         method: "POST",
         body: data,
