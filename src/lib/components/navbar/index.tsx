@@ -6,7 +6,7 @@ import {
   DrawerContent,
   useDisclosure,
 } from "@chakra-ui/react";
-
+import { useCookies } from "react-cookie";
 import { useStateValue } from "../../../context/stateProvider";
 import SidebarContent from "./sidebarcontent";
 import { MobileNav } from "./mobileNav";
@@ -14,14 +14,12 @@ import { MobileNav } from "./mobileNav";
 export default function Navbar({ children }: { children: ReactNode }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [state, dispatch] = useStateValue();
+  const [cookies, setCookie] = useCookies(["accessToken", "refreshToken"]);
   let { user } = state;
-  let cookies = document.cookie;
   useEffect(() => {
-    console.log(cookies);
-    let cookie = cookies.split(";");
-    let token = cookie[0].split("=")[1];
-    if (token) {
-      localStorage.setItem("token", token);
+    if (cookies.accessToken && cookies.refreshToken) {
+      localStorage.setItem("accessToken", cookies.accessToken);
+      localStorage.setItem("refreshToken", cookies.refreshToken);
     }
   }, [cookies]);
   return (
