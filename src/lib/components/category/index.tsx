@@ -4,7 +4,14 @@ import React from "react";
 
 import AppCard from "../app-card";
 
-export default function Category() {
+export default function Category({
+  category,
+}: {
+  category: {
+    name: string;
+    pages: [];
+  };
+}) {
   return (
     <>
       <Divider mt="2" />
@@ -25,80 +32,7 @@ export default function Category() {
             xl: 6,
           }}
           spacing={10}
-        >
-          <AppCard
-            app={{
-              name: "app",
-              icon: "ico",
-            }}
-          />
-          <AppCard
-            app={{
-              name: "app",
-              icon: "ico",
-            }}
-          />
-          <AppCard
-            app={{
-              name: "app",
-              icon: "ico",
-            }}
-          />
-          <AppCard
-            app={{
-              name: "app",
-              icon: "ico",
-            }}
-          />
-          <AppCard
-            app={{
-              name: "app",
-              icon: "ico",
-            }}
-          />
-          <AppCard
-            app={{
-              name: "app",
-              icon: "ico",
-            }}
-          />
-          <AppCard
-            app={{
-              name: "app",
-              icon: "ico",
-            }}
-          />
-          <AppCard
-            app={{
-              name: "app",
-              icon: "ico",
-            }}
-          />
-          <AppCard
-            app={{
-              name: "app",
-              icon: "ico",
-            }}
-          />
-          <AppCard
-            app={{
-              name: "app",
-              icon: "ico",
-            }}
-          />
-          <AppCard
-            app={{
-              name: "app",
-              icon: "ico",
-            }}
-          />
-          <AppCard
-            app={{
-              name: "app",
-              icon: "ico",
-            }}
-          />
-        </SimpleGrid>
+        ></SimpleGrid>
       </Box>
     </>
   );

@@ -29,8 +29,6 @@ interface MobileProps extends FlexProps {
   logout: () => void;
 }
 export const MobileNav = ({ logout, user, onOpen, ...rest }: MobileProps) => {
-  const [state, dispatch] = useStateValue();
-
   const navigate = useNavigate();
   return (
     <Flex
