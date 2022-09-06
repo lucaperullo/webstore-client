@@ -16,7 +16,7 @@ export default function Loader() {
       visibility={isLoading ? "visible" : "hidden"}
       transition="all 0.5s ease-in-out"
       opacity={isLoading ? 1 : 0}
-      h="100%"
+      h="100vh"
       position="absolute"
       zIndex={999}
       w="100%"
