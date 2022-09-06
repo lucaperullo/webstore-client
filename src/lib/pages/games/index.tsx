@@ -144,7 +144,7 @@ export default function Games() {
       {categories.map((category: any) => {
         return (
           <Category
-            path="discover"
+            path="games"
             key={category._id}
             description={category.description}
             apps={category.games}
