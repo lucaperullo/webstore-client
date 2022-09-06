@@ -8,6 +8,7 @@ import Profile from "lib/pages/profile";
 import Discover from "lib/pages/discover";
 import Games from "lib/pages/games";
 import Apps from "lib/pages/apps";
+import AppDetail from "lib/pages/appDetail";
 
 export const routes: Array<PathRouteProps> = [
   {
@@ -25,6 +26,10 @@ export const routes: Array<PathRouteProps> = [
   {
     path: "/",
     element: <Discover />,
+  },
+  {
+    path: "/detail/:path/:id",
+    element: <AppDetail />,
   },
   {
     path: "games",

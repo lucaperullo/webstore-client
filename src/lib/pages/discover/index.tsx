@@ -20,7 +20,7 @@ export default function Discover() {
       type: "SET_LOADING",
       payload: true,
     });
-    let url = import.meta.env.VITE_BASE_URL + "categories";
+    let url = import.meta.env.VITE_BASE_URL + "category/discover";
     fetch(url, {
       method: "GET",
       headers: {
@@ -30,6 +30,7 @@ export default function Discover() {
       .then((res) => res.json())
       .then((data) => {
         setCategories(data);
+        console.log(data);
         dispatch({
           type: "SET_LOADING",
           payload: false,
@@ -140,9 +141,16 @@ export default function Discover() {
           </SwiperSlide>
         </Swiper>
       </Box>
-      {categories.map((category: any) => (
-        <Category key={category._id} category={category} />
-      ))}
+      {categories.map((category: any) => {
+        return (
+          <Category
+            path="discover"
+            key={category._id}
+            description={category.description}
+            apps={category.discoverz}
+          />
+        );
+      })}
     </Box>
   );
 }

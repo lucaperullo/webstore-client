@@ -5,12 +5,13 @@ import React from "react";
 import AppCard from "../app-card";
 
 export default function Category({
-  category,
+  apps,
+  description,
+  path,
 }: {
-  category: {
-    name: string;
-    pages: [];
-  };
+  apps: any[];
+  description: string;
+  path: string;
 }) {
   return (
     <>
@@ -18,7 +19,7 @@ export default function Category({
       <Box p="4">
         <Flex justifyContent="space-between" mb="10">
           <chakra.h2 fontSize="3xl" fontWeight="bold" my="2">
-            Best viral apps and games
+            {description}
           </chakra.h2>
           <Link color="blue.500" fontSize="md" my="2">
             See all
@@ -32,7 +33,11 @@ export default function Category({
             xl: 6,
           }}
           spacing={10}
-        ></SimpleGrid>
+        >
+          {apps?.map((app) => (
+            <AppCard app={app} path={path} />
+          ))}
+        </SimpleGrid>
       </Box>
     </>
   );

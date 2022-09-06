@@ -9,8 +9,41 @@ import {
   Autoplay,
 } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useStateValue } from "../../../context/stateProvider";
+import { useEffect, useState } from "react";
 
 export default function Games() {
+  const [state, dispatch] = useStateValue();
+  const [categories, setCategories] = useState([]);
+  let getCategories = () => {
+    dispatch({
+      type: "SET_LOADING",
+      payload: true,
+    });
+    let url = import.meta.env.VITE_BASE_URL + "category/discover";
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setCategories(data);
+        console.log(data);
+        dispatch({
+          type: "SET_LOADING",
+          payload: false,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  useEffect(() => {
+    getCategories();
+  }, []);
+
   return (
     <Box as="div" height="100%">
       <Box mb="2">
@@ -108,8 +141,16 @@ export default function Games() {
           </SwiperSlide>
         </Swiper>
       </Box>
-      {/* <Category />
-      <Category /> */}
+      {categories.map((category: any) => {
+        return (
+          <Category
+            path="discover"
+            key={category._id}
+            description={category.description}
+            apps={category.discoverz}
+          />
+        );
+      })}
     </Box>
   );
 }
