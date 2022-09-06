@@ -39,7 +39,9 @@ export default function Navbar({ children }: { children: ReactNode }) {
       </Drawer>
       {/* mobilenav */}
       <MobileNav user={user} onOpen={onOpen} />
-      <Box h="calc(100%-100px)">{children}</Box>
+      <Box h="calc(100%-100px)" ml={{ base: 0, md: 60 }}>
+        {children}
+      </Box>
     </Box>
   );
 }
