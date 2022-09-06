@@ -123,7 +123,7 @@ export const MobileNav = ({ user, onOpen, ...rest }: MobileProps) => {
                       });
                       let url = import.meta.env.VITE_API_URL + "users/logout";
                       fetch(url, {
-                        method: "GET",
+                        method: "POST",
                       })
                         .then((res) => res.json())
                         .then((data) => {
