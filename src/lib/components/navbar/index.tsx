@@ -10,11 +10,38 @@ import {
 import { useStateValue } from "../../../context/stateProvider";
 import SidebarContent from "./sidebarcontent";
 import { MobileNav } from "./mobileNav";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar({ children }: { children: ReactNode }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [state, dispatch] = useStateValue();
-
+  const navigate = useNavigate();
+  const logout = () => {
+    dispatch({
+      type: "SET_LOADING",
+      loading: true,
+    });
+    let url = import.meta.env.VITE_BASE_URL + "users/logout";
+    fetch(url, {
+      method: "POST",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch({
+          type: "SET_USER",
+          user: null,
+        });
+        dispatch({
+          type: "SET_LOADING",
+          loading: false,
+        });
+        dispatch({
+          type: "SET_USER",
+          payload: null,
+        });
+        navigate("/login");
+      });
+  };
   let { user } = state;
 
   return (
@@ -38,7 +65,7 @@ export default function Navbar({ children }: { children: ReactNode }) {
         </DrawerContent>
       </Drawer>
       {/* mobilenav */}
-      <MobileNav user={user} onOpen={onOpen} />
+      <MobileNav user={user} onOpen={onOpen} logout={logout} />
       <Box h="calc(100%-100px)" ml={{ base: 0, md: 60 }}>
         {children}
       </Box>
