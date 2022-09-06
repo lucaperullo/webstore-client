@@ -19,7 +19,7 @@ export default function Navbar({ children }: { children: ReactNode }) {
   const logout = () => {
     dispatch({
       type: "SET_LOADING",
-      loading: true,
+      payload: true,
     });
     let url = import.meta.env.VITE_BASE_URL + "users/logout";
     fetch(url, {
@@ -29,11 +29,11 @@ export default function Navbar({ children }: { children: ReactNode }) {
       .then((data) => {
         dispatch({
           type: "SET_USER",
-          user: null,
+          payload: null,
         });
         dispatch({
           type: "SET_LOADING",
-          loading: false,
+          payload: false,
         });
         dispatch({
           type: "SET_USER",
