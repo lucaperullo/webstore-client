@@ -9,6 +9,7 @@ import {
 import { IconType } from "react-icons";
 import { BiJoystick } from "react-icons/bi";
 import { FiCompass, FiLogIn, FiStar, FiSettings } from "react-icons/fi";
+import { BsGrid } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { NavItem } from "./navitem";
 
@@ -29,7 +30,7 @@ export default function SidebarContent({
   const LinkItems: Array<LinkItemProps> = [
     { name: "Discover", path: "/", icon: FiCompass },
     { name: "Games", icon: BiJoystick },
-    { name: "Applications", icon: BiJoystick },
+    { name: "Applications", icon: BsGrid },
     { name: "login", icon: FiLogIn },
   ];
   const loggedInLinks: Array<LinkItemProps> = [
@@ -59,8 +60,9 @@ export default function SidebarContent({
         ? LinkItems.concat(loggedInLinks)
             .filter((r) => r.name !== "login")
             .map((link) => {
+              let linke = link.path ? link.path : link.name.toLocaleLowerCase();
               return (
-                <Link to={link.name.toLocaleLowerCase()} key={link.name}>
+                <Link to={linke} key={link.name}>
                   <NavItem onClick={onClose} icon={link.icon}>
                     {link.name}
                   </NavItem>
