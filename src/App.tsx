@@ -19,6 +19,13 @@ const App = () => {
   const [user, setUser] = useState(null);
   const [state, dispatch] = useStateValue();
   const navigate = useNavigate();
+  const setloggedInUser = () => {
+    dispatch({
+      type: "SET_USER",
+      payload: user,
+    });
+    navigate("/");
+  };
   const start = async () => {
     await authorise(setUser);
     setTimeout(() => {
@@ -38,11 +45,7 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    dispatch({
-      type: "SET_USER",
-      payload: user,
-    });
-    navigate("/");
+    setloggedInUser();
   }, [user]);
   return (
     <ChakraProvider theme={theme}>
