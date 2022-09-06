@@ -26,19 +26,17 @@ export default function Navbar({ children }: { children: ReactNode }) {
       method: "POST",
     })
       .then((res) => res.json())
-      .then((data) => {
-        dispatch({
-          type: "SET_USER",
-          payload: null,
-        });
+      .then(() => {
         dispatch({
           type: "SET_LOADING",
           payload: false,
         });
-        dispatch({
-          type: "SET_USER",
-          payload: null,
-        });
+        setTimeout(() => {
+          dispatch({
+            type: "SET_USER",
+            payload: null,
+          });
+        }, 1000);
         navigate("/login");
       });
   };
