@@ -8,13 +8,41 @@ import "swiper/css/effect-cube";
 import "swiper/css";
 import "swiper/css/pagination";
 import "./index.css";
-import { StateProvider } from "./context/stateProvider";
-import { initialState, reducer } from "./context/reducer";
-import Loader from "lib/loader";
 
-const App = () => (
-  <ChakraProvider theme={theme}>
-    <StateProvider initialState={initialState} reducer={reducer}>
+import Loader from "lib/loader";
+import { useEffect, useState } from "react";
+import { authorise } from "./guard";
+import { useStateValue } from "./context/stateProvider";
+
+const App = () => {
+  const [user, setUser] = useState(null);
+  const [state, dispatch] = useStateValue();
+  const start = async () => {
+    await authorise(setUser);
+    setTimeout(() => {
+      dispatch({
+        type: "SET_LOADING",
+        payload: false,
+      });
+    }, 1300);
+  };
+
+  useEffect(() => {
+    dispatch({
+      type: "SET_LOADING",
+      payload: true,
+    });
+    start();
+  }, []);
+
+  useEffect(() => {
+    dispatch({
+      type: "SET_USER",
+      payload: user,
+    });
+  }, [user]);
+  return (
+    <ChakraProvider theme={theme}>
       <Box>
         <Loader />
 
@@ -24,8 +52,8 @@ const App = () => (
           </Navbar>
         </Router>
       </Box>
-    </StateProvider>
-  </ChakraProvider>
-);
+    </ChakraProvider>
+  );
+};
 
 export default App;
