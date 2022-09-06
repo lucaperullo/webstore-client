@@ -28,13 +28,13 @@ export default function Navbar({ children }: { children: ReactNode }) {
       .then((res) => res.json())
       .then(() => {
         dispatch({
-          type: "SET_LOADING",
-          payload: false,
+          type: "SET_USER",
+          payload: null,
         });
         setTimeout(() => {
           dispatch({
-            type: "SET_USER",
-            payload: null,
+            type: "SET_LOADING",
+            payload: false,
           });
         }, 1000);
         navigate("/login");
