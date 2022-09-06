@@ -13,10 +13,12 @@ import Loader from "lib/loader";
 import { useEffect, useState } from "react";
 import { authorise } from "./guard";
 import { useStateValue } from "./context/stateProvider";
+import { useNavigate } from "react-router-dom";
 
 const App = () => {
   const [user, setUser] = useState(null);
   const [state, dispatch] = useStateValue();
+  const navigate = useNavigate();
   const start = async () => {
     await authorise(setUser);
     setTimeout(() => {
@@ -40,6 +42,7 @@ const App = () => {
       type: "SET_USER",
       payload: user,
     });
+    navigate("/");
   }, [user]);
   return (
     <ChakraProvider theme={theme}>
