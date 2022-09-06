@@ -16,11 +16,12 @@ import {
   MenuList,
   MenuItem,
   MenuDivider,
+  Link,
 } from "@chakra-ui/react";
 import { useStateValue } from "../../../context/stateProvider";
 
 import { FiMenu, FiSearch, FiBell, FiChevronDown } from "react-icons/fi";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface MobileProps extends FlexProps {
   onOpen: () => void;
@@ -115,14 +116,35 @@ export const MobileNav = ({ user, onOpen, ...rest }: MobileProps) => {
                   <MenuItem>Billing</MenuItem>
                   <MenuDivider />
                   <MenuItem
-                    onClick={() =>
+                    onClick={() => {
                       dispatch({
-                        type: "SET_USER",
-                        payload: null,
+                        type: "SET_LOADING",
+                        loading: true,
+                      });
+                      let url = import.meta.env.VITE_API_URL + "users/logout";
+                      fetch(url, {
+                        method: "GET",
+                        credentials: "include",
                       })
-                    }
+                        .then((res) => res.json())
+                        .then((data) => {
+                          dispatch({
+                            type: "SET_USER",
+                            user: null,
+                          });
+                          dispatch({
+                            type: "SET_LOADING",
+                            loading: false,
+                          });
+                          dispatch({
+                            type: "SET_USER",
+                            payload: null,
+                          });
+                          navigate("/login");
+                        });
+                    }}
                   >
-                    <Link to="/login">Sign out </Link>
+                    <Link color="red.400">Sign out </Link>
                   </MenuItem>
                 </MenuList>
               </Menu>
