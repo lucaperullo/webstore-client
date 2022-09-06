@@ -20,7 +20,7 @@ export default function Games() {
       type: "SET_LOADING",
       payload: true,
     });
-    let url = import.meta.env.VITE_BASE_URL + "category/discover";
+    let url = import.meta.env.VITE_BASE_URL + "category/games";
     fetch(url, {
       method: "GET",
       headers: {
@@ -147,7 +147,7 @@ export default function Games() {
             path="discover"
             key={category._id}
             description={category.description}
-            apps={category.discoverz}
+            apps={category.games}
           />
         );
       })}
