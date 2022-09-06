@@ -34,7 +34,7 @@ export const MobileNav = ({ user, onOpen, ...rest }: MobileProps) => {
       type: "SET_LOADING",
       loading: true,
     });
-    let url = import.meta.env.VITE_API_URL + "users/logout";
+    let url = import.meta.env.VITE_BASE_URL + "users/logout";
     fetch(url, {
       method: "POST",
     })
