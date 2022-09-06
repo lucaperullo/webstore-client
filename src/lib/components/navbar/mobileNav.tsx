@@ -26,35 +26,11 @@ import { useNavigate } from "react-router-dom";
 interface MobileProps extends FlexProps {
   onOpen: () => void;
   user: any;
+  logout: () => void;
 }
-export const MobileNav = ({ user, onOpen, ...rest }: MobileProps) => {
+export const MobileNav = ({ logout, user, onOpen, ...rest }: MobileProps) => {
   const [state, dispatch] = useStateValue();
-  const logout = () => {
-    dispatch({
-      type: "SET_LOADING",
-      loading: true,
-    });
-    let url = import.meta.env.VITE_BASE_URL + "users/logout";
-    fetch(url, {
-      method: "POST",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch({
-          type: "SET_USER",
-          user: null,
-        });
-        dispatch({
-          type: "SET_LOADING",
-          loading: false,
-        });
-        dispatch({
-          type: "SET_USER",
-          payload: null,
-        });
-        navigate("/login");
-      });
-  };
+
   const navigate = useNavigate();
   return (
     <Flex
