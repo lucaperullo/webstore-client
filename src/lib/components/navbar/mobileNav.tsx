@@ -28,8 +28,34 @@ interface MobileProps extends FlexProps {
   user: any;
 }
 export const MobileNav = ({ user, onOpen, ...rest }: MobileProps) => {
-  const navigate = useNavigate();
   const [state, dispatch] = useStateValue();
+  const logout = () => {
+    dispatch({
+      type: "SET_LOADING",
+      loading: true,
+    });
+    let url = import.meta.env.VITE_API_URL + "users/logout";
+    fetch(url, {
+      method: "POST",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch({
+          type: "SET_USER",
+          user: null,
+        });
+        dispatch({
+          type: "SET_LOADING",
+          loading: false,
+        });
+        dispatch({
+          type: "SET_USER",
+          payload: null,
+        });
+        navigate("/login");
+      });
+  };
+  const navigate = useNavigate();
   return (
     <Flex
       pl={{ base: 0, md: 60 }}
@@ -115,34 +141,7 @@ export const MobileNav = ({ user, onOpen, ...rest }: MobileProps) => {
                   <MenuItem>Settings</MenuItem>
                   <MenuItem>Billing</MenuItem>
                   <MenuDivider />
-                  <MenuItem
-                    onClick={() => {
-                      dispatch({
-                        type: "SET_LOADING",
-                        loading: true,
-                      });
-                      let url = import.meta.env.VITE_API_URL + "users/logout";
-                      fetch(url, {
-                        method: "POST",
-                      })
-                        .then((res) => res.json())
-                        .then((data) => {
-                          dispatch({
-                            type: "SET_USER",
-                            user: null,
-                          });
-                          dispatch({
-                            type: "SET_LOADING",
-                            loading: false,
-                          });
-                          dispatch({
-                            type: "SET_USER",
-                            payload: null,
-                          });
-                          navigate("/login");
-                        });
-                    }}
-                  >
+                  <MenuItem onClick={() => logout()}>
                     <Link color="red.400">Sign out </Link>
                   </MenuItem>
                 </MenuList>
