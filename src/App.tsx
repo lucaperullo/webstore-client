@@ -13,18 +13,16 @@ import Loader from "lib/loader";
 import { useEffect, useState } from "react";
 import { authorise } from "./guard";
 import { useStateValue } from "./context/stateProvider";
-import { useNavigate } from "react-router-dom";
 
 const App = () => {
   const [user, setUser] = useState(null);
   const [state, dispatch] = useStateValue();
-  const navigate = useNavigate();
+
   const setloggedInUser = () => {
     dispatch({
       type: "SET_USER",
       payload: user,
     });
-    navigate("/");
   };
   const start = async () => {
     await authorise(setUser);
