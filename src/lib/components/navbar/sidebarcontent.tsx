@@ -5,13 +5,23 @@ import {
   CloseButton,
   Flex,
   useColorModeValue,
+  Input,
+  InputGroup,
+  InputLeftAddon,
 } from "@chakra-ui/react";
 import { IconType } from "react-icons";
 import { BiJoystick } from "react-icons/bi";
-import { FiCompass, FiLogIn, FiStar, FiSettings } from "react-icons/fi";
+import {
+  FiCompass,
+  FiLogIn,
+  FiStar,
+  FiSettings,
+  FiSearch,
+} from "react-icons/fi";
 import { BsGrid } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { NavItem } from "./navitem";
+import { useState } from "react";
 
 interface SidebarProps extends BoxProps {
   onClose: () => void;
@@ -22,11 +32,8 @@ interface LinkItemProps {
   path?: string;
   icon: IconType;
 }
-export default function SidebarContent({
-  onClose,
-  user,
-  ...rest
-}: SidebarProps) {
+export const SidebarContent = ({ onClose, user, ...rest }: SidebarProps) => {
+  const [searching, setSearching] = useState(false);
   const LinkItems: Array<LinkItemProps> = [
     { name: "Discover", path: "/", icon: FiCompass },
     { name: "Games", icon: BiJoystick },
@@ -56,29 +63,51 @@ export default function SidebarContent({
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
-      {!!user
-        ? LinkItems.concat(loggedInLinks)
-            .filter((r) => r.name !== "login")
-            .map((link) => {
-              let linke = link.path ? link.path : link.name.toLocaleLowerCase();
-              return (
-                <Link to={linke} key={link.name}>
-                  <NavItem onClick={onClose} icon={link.icon}>
-                    {link.name}
-                  </NavItem>
-                </Link>
-              );
-            })
-        : LinkItems.map((link) => {
-            let linke = link.path ? link.path : link.name.toLocaleLowerCase();
-            return (
-              <Link to={linke} key={link.name}>
-                <NavItem onClick={onClose} icon={link.icon}>
-                  {link.name}
-                </NavItem>
-              </Link>
-            );
-          })}
+      <InputGroup
+        px="4"
+        my="2"
+        onChange={(e: any) => {
+          if (e.target.value.length > 0) {
+            setSearching(true);
+          } else {
+            setSearching(false);
+          }
+        }}
+      >
+        <InputLeftAddon children={<FiSearch />} />
+        <Input placeholder="Search" />
+      </InputGroup>
+      {!searching && (
+        <>
+          {!!user
+            ? LinkItems.concat(loggedInLinks)
+                .filter((r) => r.name !== "login")
+                .map((link) => {
+                  let linke = link.path
+                    ? link.path
+                    : link.name.toLocaleLowerCase();
+                  return (
+                    <Link to={linke} key={link.name}>
+                      <NavItem onClick={onClose} icon={link.icon}>
+                        {link.name}
+                      </NavItem>
+                    </Link>
+                  );
+                })
+            : LinkItems.map((link) => {
+                let linke = link.path
+                  ? link.path
+                  : link.name.toLocaleLowerCase();
+                return (
+                  <Link to={linke} key={link.name}>
+                    <NavItem onClick={onClose} icon={link.icon}>
+                      {link.name}
+                    </NavItem>
+                  </Link>
+                );
+              })}
+        </>
+      )}
     </Box>
   );
-}
+};

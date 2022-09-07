@@ -58,7 +58,7 @@ export default function AppDetail() {
         spacing={{ base: 8, md: 10 }}
         py={{ base: 18, md: 24 }}
       >
-        <Flex>
+        <Flex justifyContent="center">
           <Box
             bgImage={`url(${app?.image})`}
             bgSize="cover"
@@ -67,6 +67,9 @@ export default function AppDetail() {
           />
         </Flex>
         <Button
+          as="a"
+          href={app?.url}
+          target="_blank"
           rounded={"none"}
           w={"auto"}
           mt={8}

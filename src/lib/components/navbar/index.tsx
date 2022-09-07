@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 
 import { useStateValue } from "../../../context/stateProvider";
-import SidebarContent from "./sidebarcontent";
+import { SidebarContent } from "./sidebarcontent";
 import { MobileNav } from "./mobileNav";
 import { useNavigate } from "react-router-dom";
 

@@ -17,11 +17,14 @@ import {
   MenuItem,
   MenuDivider,
   Link,
+  Button,
+  useColorMode,
 } from "@chakra-ui/react";
 import { useStateValue } from "../../../context/stateProvider";
 
 import { FiMenu, FiSearch, FiBell, FiChevronDown } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import { BsMoonStarsFill, BsSun } from "react-icons/bs";
 
 interface MobileProps extends FlexProps {
   onOpen: () => void;
@@ -29,6 +32,7 @@ interface MobileProps extends FlexProps {
   logout: () => void;
 }
 export const MobileNav = ({ logout, user, onOpen, ...rest }: MobileProps) => {
+  const { colorMode, toggleColorMode } = useColorMode();
   const navigate = useNavigate();
   return (
     <Flex
@@ -43,7 +47,7 @@ export const MobileNav = ({ logout, user, onOpen, ...rest }: MobileProps) => {
       bg={useColorModeValue("white", "gray.900")}
       borderBottomWidth="1px"
       borderBottomColor={useColorModeValue("gray.200", "gray.700")}
-      justifyContent={{ base: "space-between" }}
+      justifyContent={{ base: "space-between", md: "flex-end" }}
       {...rest}
     >
       <IconButton
@@ -62,15 +66,21 @@ export const MobileNav = ({ logout, user, onOpen, ...rest }: MobileProps) => {
       >
         Webstore
       </Text>
-      <Flex pl="60" display={{ base: "none", md: "flex" }} alignItems="center">
-        <InputGroup>
-          <InputLeftAddon children={<FiSearch />} />
-          <Input placeholder="Search" />
-        </InputGroup>
-      </Flex>
+
       <Flex alignItems="center">
         {!!user && (
           <HStack spacing={{ base: "0", md: "6" }}>
+            <IconButton
+              aria-label="Toggle Color Mode"
+              onClick={toggleColorMode}
+              _focus={{ boxShadow: "none" }}
+              w="fit-content"
+              variant="ghost"
+              borderRadius="full"
+            >
+              {colorMode === "light" ? <BsMoonStarsFill /> : <BsSun />}
+            </IconButton>
+
             <IconButton
               size="lg"
               variant="ghost"

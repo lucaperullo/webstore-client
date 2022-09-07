@@ -5,10 +5,12 @@ import { useStateValue } from "../../context/stateProvider";
 export default function Loader() {
   const [{ isLoading }, dispatch] = useStateValue();
   useEffect(() => {
-    dispatch({
-      type: "SET_LOADING",
-      payload: false,
-    });
+    // disable body scroll
+    document.body.style.overflow = "hidden";
+    return () => {
+      // enable body scroll on unmount
+      document.body.style.overflow = "unset";
+    };
   }, []);
 
   return (
@@ -17,7 +19,7 @@ export default function Loader() {
       transition="all 0.5s ease-in-out"
       opacity={isLoading ? 1 : 0}
       h="100vh"
-      position="absolute"
+      position="fixed"
       zIndex={999}
       w="100%"
       overflow="hidden"
