@@ -58,9 +58,15 @@ export const SidebarContent = ({ onClose, user, ...rest }: SidebarProps) => {
       {...rest}
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Webstore
-        </Text>
+        <Box
+          display={{ base: "none", md: "flex" }}
+          h="50px"
+          w="120px"
+          bgImage={"url(/assets/webstore_logo_long.svg)"}
+          bgSize="cover"
+          bgPosition="center"
+          bgRepeat="no-repeat"
+        ></Box>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       <InputGroup

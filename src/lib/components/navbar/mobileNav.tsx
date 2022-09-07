@@ -44,7 +44,7 @@ export const MobileNav = ({ logout, user, onOpen, ...rest }: MobileProps) => {
       zIndex={2}
       width="full"
       alignItems="center"
-      bg={useColorModeValue("white", "gray.900")}
+      bg={useColorModeValue("gray.50", "gray.900")}
       borderBottomWidth="1px"
       borderBottomColor={useColorModeValue("gray.200", "gray.700")}
       justifyContent={{ base: "space-between", md: "flex-end" }}
@@ -58,14 +58,23 @@ export const MobileNav = ({ logout, user, onOpen, ...rest }: MobileProps) => {
         icon={<FiMenu />}
       />
 
-      <Text
+      {/* <Text
         display={{ base: "flex", md: "none" }}
         fontSize="2xl"
         fontFamily="monospace"
         fontWeight="bold"
       >
         Webstore
-      </Text>
+      </Text> */}
+      <Box
+        display={{ base: "flex", md: "none" }}
+        h="50px"
+        w="120px"
+        bgImage={"url(/assets/webstore_logo_short.svg)"}
+        bgSize="cover"
+        bgPosition="center"
+        bgRepeat="no-repeat"
+      ></Box>
 
       <Flex alignItems="center">
         {!!user && (

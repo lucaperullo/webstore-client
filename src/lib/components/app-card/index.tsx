@@ -47,6 +47,7 @@ export default function AppCard({
             transition="all 0.2s ease-in-out"
             cursor={"pointer"}
             bgImage={`url(${app.image})`}
+            bgPosition="center"
             bgSize="cover"
             borderRadius={30}
             h="100px"
