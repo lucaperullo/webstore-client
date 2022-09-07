@@ -1,16 +1,16 @@
 import { Divider, Flex, chakra, SimpleGrid, Box, Link } from "@chakra-ui/react";
 
-import React from "react";
-
 import AppCard from "../app-card";
 
 export default function Category({
   apps,
   description,
+  name,
   path,
 }: {
   apps: any[];
   description: string;
+  name: string;
   path: string;
 }) {
   return (
@@ -19,7 +19,7 @@ export default function Category({
       <Box p="4">
         <Flex justifyContent="space-between" mb="10">
           <chakra.h2 fontSize="3xl" fontWeight="bold" my="2">
-            {description}
+            {name}
           </chakra.h2>
           <Link color="blue.500" fontSize="md" my="2">
             See all

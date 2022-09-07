@@ -147,6 +147,7 @@ export default function Apps() {
           <Category
             path="apps"
             key={category._id}
+            name={category.name}
             description={category.description}
             apps={category.apps}
           />

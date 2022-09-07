@@ -146,6 +146,7 @@ export default function Discover() {
           <Category
             path="discover"
             key={category._id}
+            name={category.name}
             description={category.description}
             apps={category.discoverz}
           />
