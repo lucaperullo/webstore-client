@@ -124,7 +124,7 @@ export default function AppDetail() {
                 {app?.description}
               </Text>
             </VStack>
-            <Box>
+            {/* <Box>
               <Text
                 fontSize={{ base: "16px", lg: "18px" }}
                 color={useColorModeValue("yellow.500", "yellow.300")}
@@ -204,12 +204,12 @@ export default function AppDetail() {
                   5 bar (50 metres / 167 feet){" "}
                 </ListItem>
               </List>
-            </Box>
+            </Box> */}
           </Stack>
 
-          <Stack direction="row" alignItems="center" justifyContent={"center"}>
+          {/* <Stack direction="row" alignItems="center" justifyContent={"center"}>
             asd
-          </Stack>
+          </Stack> */}
         </Stack>
       </SimpleGrid>
     </Container>

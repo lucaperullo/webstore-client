@@ -45,7 +45,7 @@ export default function Discover() {
   }, []);
 
   return (
-    <Box as="div" height="100%">
+    <Box as="div" height="100%" overflowX="hidden">
       <Box mb="2">
         <Swiper
           autoplay={{
