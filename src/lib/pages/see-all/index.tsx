@@ -33,7 +33,7 @@ export default function SeeAllApps() {
 
   useEffect(() => {
     getApps();
-  }, []);
+  }, [id, path]);
 
   return (
     <SimpleGrid

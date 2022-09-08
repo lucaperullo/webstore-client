@@ -60,11 +60,7 @@ export default function Navbar({ children }: { children: ReactNode }) {
         size="full"
       >
         <DrawerContent>
-          <SidebarContent
-            user={user}
-            onClose={onClose}
-            navigate={() => navigate("/")}
-          />
+          <SidebarContent user={user} onClose={onClose} navigate={navigate} />
         </DrawerContent>
       </Drawer>
       {/* mobilenav */}

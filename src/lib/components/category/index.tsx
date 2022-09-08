@@ -55,11 +55,10 @@ export default function Category({
               <motion.div
                 // animate while in view from opacity 0 to 1 and scale 0.9 to 1 debounce 100ms
                 key={index}
-                animate={{ opacity: 1, scale: 1 }}
-                // animate while not in view from opacity 1 to 0 and scale 1 to 0.9
                 initial={{ opacity: 0, scale: 0.9 }}
-                // transition from 0.3 to 0.5 seconds
-                transition={{ duration: 0.3, delay: 0 + index * 0.1 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3, delay: 0 + index * 0.05 }}
 
                 // debounce 100ms
               >
@@ -78,7 +77,22 @@ export default function Category({
             >
               {apps?.map((app, index) => (
                 <SwiperSlide key={index} virtualIndex={index}>
-                  <AppCard app={app} path={path} />
+                  <motion.div
+                    // animate while in view from opacity 0 to 1 and scale 0.9 to 1 debounce 100ms
+                    key={index}
+                    //  animate while in view and when exiting from opacity 1 to 0 and scale 1 to 0.9
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.3, delay: 0 + index * 0.05 }}
+                    // animate while not in view from opacity 1 to 0 and scale 1 to 0.9
+
+                    // transition from 0.3 to 0.5 seconds
+
+                    // debounce 100ms
+                  >
+                    <AppCard app={app} path={path} />
+                  </motion.div>
                 </SwiperSlide>
               ))}
             </Swiper>

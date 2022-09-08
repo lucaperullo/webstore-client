@@ -45,7 +45,7 @@ export default function AppDetail() {
   };
   useEffect(() => {
     getAppInfo();
-  }, []);
+  }, [path, id]);
 
   useEffect(() => {
     console.log(app);
