@@ -186,9 +186,6 @@ export default function Discover() {
                       h="190"
                       w="100%"
                       bgGradient="linear(to-tr, purple.800,  pink.600)"
-                      _dark={{
-                        bg: "white",
-                      }}
                     >
                       <Text
                         w="full"
@@ -502,9 +499,6 @@ export default function Discover() {
                       h="210"
                       w="100%"
                       bgGradient="linear(to-tr, purple.800,  pink.600)"
-                      _dark={{
-                        bg: "white",
-                      }}
                     >
                       <Text
                         w="full"
