@@ -48,8 +48,20 @@ export default function Category({
           }}
           spacing={10}
         >
-          {apps?.map((app) => (
-            <AppCard app={app} path={path} />
+          {apps?.map((app, index) => (
+            <motion.div
+              // animate while in view from opacity 0 to 1 and scale 0.9 to 1 debounce 100ms
+              key={index}
+              animate={{ opacity: 1, scale: 1 }}
+              // animate while not in view from opacity 1 to 0 and scale 1 to 0.9
+              initial={{ opacity: 0, scale: 0.9 }}
+              // transition from 0.3 to 0.5 seconds
+              transition={{ duration: 0.3, delay: 0 + index * 0.1 }}
+
+              // debounce 100ms
+            >
+              <AppCard app={app} path={path} />
+            </motion.div>
           ))}
         </SimpleGrid>
       </Box>

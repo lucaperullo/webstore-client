@@ -39,8 +39,8 @@ export default function SeeAllApps() {
     <SimpleGrid
       columns={{
         base: 1,
-        md: 3,
-        lg: 3,
+        md: 2,
+        lg: 2,
         xl: 4,
       }}
       spacing={40}

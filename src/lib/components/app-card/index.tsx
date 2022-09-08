@@ -16,19 +16,7 @@ export default function AppCard({
 }) {
   const navigate = useNavigate();
   return (
-    <motion.div
-      variants={{
-        hidden: { opacity: 0, scale: 0 },
-        visible: {
-          opacity: 1,
-          scale: 1,
-          transition: {
-            delayChildren: 0.3,
-            staggerChildren: 0.2,
-          },
-        },
-      }}
-    >
+    <>
       <Flex flexDir="column" justifyContent="center" alignItems="center">
         <Link
           display="flex"
@@ -42,7 +30,7 @@ export default function AppCard({
           <Box
             _hover={{
               transform: "scale(1.05)",
-              filter: "drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.25))",
+              filter: "drop-shadow(0px 20px 5px rgba(0, 0, 0, 0.15))",
             }}
             transition="all 0.2s ease-in-out"
             cursor={"pointer"}
@@ -57,6 +45,6 @@ export default function AppCard({
           {app.name}
         </Link>
       </Flex>
-    </motion.div>
+    </>
   );
 }
