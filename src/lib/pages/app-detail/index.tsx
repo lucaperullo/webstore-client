@@ -67,7 +67,7 @@ export default function AppDetail() {
           />
         </Flex>
         <Button
-          position="sticky"
+          position={{ base: "unset", md: "sticky" }}
           top="60"
           as="a"
           href={app?.url}
