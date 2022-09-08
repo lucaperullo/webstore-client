@@ -17,3 +17,24 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+.swiper-slide-prev,
+.swiper-slide-next,
+.swiper-slide-duplicate-prev,
+.swiper-slide-duplicate-next {
+  overflow: hidden;
+  z-index: -1;
+}
+
+.swiper-3d .swiper-slide-shadow-left {
+  background-image: linear-gradient(to left, rgb(0 0 0 / 45%), rgb(0 0 0 / 0%));
+  backdrop-filter: blur(2px);
+}
+.swiper-3d .swiper-slide-shadow-right {
+  background-image: linear-gradient(
+    to right,
+    rgb(0 0 0 / 45%),
+    rgb(0 0 0 / 0%)
+  );
+  backdrop-filter: blur(2px);
+}

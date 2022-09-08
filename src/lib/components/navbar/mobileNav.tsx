@@ -68,8 +68,8 @@ export const MobileNav = ({ logout, user, onOpen, ...rest }: MobileProps) => {
       </Text> */}
       <Box
         display={{ base: "flex", md: "none" }}
-        h="50px"
-        w="120px"
+        h="80px"
+        w="180px"
         bgImage={"url(/assets/webstore_logo_short.svg)"}
         bgSize="cover"
         bgPosition="center"
