@@ -49,7 +49,7 @@ export default function Games() {
       <Box mb="2">
         <Swiper
           autoplay={{
-            delay: 5000,
+            delay: 10000,
             disableOnInteraction: false,
           }}
           effect={"coverflow"}
@@ -148,7 +148,9 @@ export default function Games() {
             key={category._id}
             name={category.name}
             description={category.description}
-            apps={category.games}
+            apps={category.games.slice(0, 6)}
+            allApps={category.games}
+            id={category._id}
           />
         );
       })}

@@ -1,4 +1,5 @@
-import { Divider, Flex, chakra, SimpleGrid, Box, Link } from "@chakra-ui/react";
+import { Divider, Flex, chakra, SimpleGrid, Box } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import AppCard from "../app-card";
@@ -8,26 +9,18 @@ export default function Category({
   description,
   name,
   path,
+  allApps,
+  id,
 }: {
   apps: any[];
   description: string;
   name: string;
   path: string;
+  allApps: any[];
+  id: string;
 }) {
   return (
-    <motion.div
-      variants={{
-        hidden: { opacity: 0, scale: 0 },
-        visible: {
-          opacity: 1,
-          scale: 1,
-          transition: {
-            delayChildren: 0.3,
-            staggerChildren: 0.2,
-          },
-        },
-      }}
-    >
+    <motion.div>
       <Divider mt="2" />
       <Box p="4">
         <Flex justifyContent="space-between">
@@ -35,9 +28,7 @@ export default function Category({
             {name}
           </chakra.h2>
 
-          <Link color="blue.500" fontSize="md" my="2">
-            See all
-          </Link>
+          <Link to={`/category/${path}/${id}`}>See all</Link>
         </Flex>
         <chakra.h3
           mb="10"
@@ -52,7 +43,7 @@ export default function Category({
           columns={{
             base: 3,
             md: 4,
-            lg: 5,
+            lg: 6,
             xl: 6,
           }}
           spacing={10}

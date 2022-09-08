@@ -83,55 +83,7 @@ export default function Discover() {
               bgGradient="linear(to-r, green.200, pink.500)"
             ></Box>
           </SwiperSlide>
-          <SwiperSlide>
-            <Box
-              h="320px"
-              w="100%"
-              bgGradient="linear(to-r, green.200, pink.500)"
-            ></Box>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Box
-              h="320px"
-              w="100%"
-              bgGradient="linear(to-r, green.200, pink.500)"
-            ></Box>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Box
-              h="320px"
-              w="100%"
-              bgGradient="linear(to-r, green.200, pink.500)"
-            ></Box>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Box
-              h="320px"
-              w="100%"
-              bgGradient="linear(to-r, green.200, pink.500)"
-            ></Box>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Box
-              h="320px"
-              w="100%"
-              bgGradient="linear(to-r, green.200, pink.500)"
-            ></Box>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Box
-              h="320px"
-              w="100%"
-              bgGradient="linear(to-r, green.200, pink.500)"
-            ></Box>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Box
-              h="320px"
-              w="100%"
-              bgGradient="linear(to-r, green.200, pink.500)"
-            ></Box>
-          </SwiperSlide>
+
           <SwiperSlide>
             <Box
               h="320px"
@@ -148,7 +100,9 @@ export default function Discover() {
             key={category._id}
             name={category.name}
             description={category.description}
-            apps={category.discoverz}
+            apps={category.discoverz.slice(0, 6)}
+            allApps={category.discoverz}
+            id={category._id}
           />
         );
       })}

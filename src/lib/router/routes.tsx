@@ -8,7 +8,9 @@ import Profile from "lib/pages/profile";
 import Discover from "lib/pages/discover";
 import Games from "lib/pages/games";
 import Apps from "lib/pages/apps";
-import AppDetail from "lib/pages/appDetail";
+import AppDetail from "lib/pages/app-detail";
+import Page404 from "lib/pages/404";
+import SeeAllApps from "lib/pages/see-all";
 
 export const routes: Array<PathRouteProps> = [
   {
@@ -32,12 +34,20 @@ export const routes: Array<PathRouteProps> = [
     element: <AppDetail />,
   },
   {
+    path: "/category/:path/:id",
+    element: <SeeAllApps />,
+  },
+  {
     path: "games",
     element: <Games />,
   },
   {
     path: "applications",
     element: <Apps />,
+  },
+  {
+    path: "*",
+    element: <Page404 />,
   },
 ];
 

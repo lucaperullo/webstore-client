@@ -45,6 +45,7 @@ export default function Navbar({ children }: { children: ReactNode }) {
   return (
     <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
       <SidebarContent
+        navigate={() => navigate("/")}
         onClose={() => onClose}
         display={{ base: "none", md: "block" }}
         user={user}
@@ -59,7 +60,11 @@ export default function Navbar({ children }: { children: ReactNode }) {
         size="full"
       >
         <DrawerContent>
-          <SidebarContent user={user} onClose={onClose} />
+          <SidebarContent
+            user={user}
+            onClose={onClose}
+            navigate={() => navigate("/")}
+          />
         </DrawerContent>
       </Drawer>
       {/* mobilenav */}

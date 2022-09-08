@@ -26,13 +26,19 @@ import { useState } from "react";
 interface SidebarProps extends BoxProps {
   onClose: () => void;
   user: any;
+  navigate: any;
 }
 interface LinkItemProps {
   name: string;
   path?: string;
   icon: IconType;
 }
-export const SidebarContent = ({ onClose, user, ...rest }: SidebarProps) => {
+export const SidebarContent = ({
+  onClose,
+  navigate,
+  user,
+  ...rest
+}: SidebarProps) => {
   const [searching, setSearching] = useState(false);
   const LinkItems: Array<LinkItemProps> = [
     { name: "Discover", path: "/", icon: FiCompass },
@@ -59,13 +65,15 @@ export const SidebarContent = ({ onClose, user, ...rest }: SidebarProps) => {
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Box
+          cursor={"pointer"}
           display={{ base: "none", md: "flex" }}
-          h="50px"
-          w="120px"
+          h="100px"
+          w="180px"
           bgImage={"url(/assets/webstore_logo_long.svg)"}
           bgSize="cover"
           bgPosition="center"
           bgRepeat="no-repeat"
+          onClick={navigate}
         ></Box>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>

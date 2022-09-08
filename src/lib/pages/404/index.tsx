@@ -1,36 +1,52 @@
-import {
-  Box,
-  Button,
-  Grid,
-  Heading,
-  Image,
-  Link,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Heading, Text, Button, Image, Link } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
-const Page404 = () => {
+export default function Page404() {
   const navigate = useNavigate();
 
   const handleBackToHome = () => navigate("/");
-
   return (
-    <Grid gap={4} textAlign="center">
-      <Heading>Page not Found</Heading>
-
-      <Box maxWidth={[280, 400]} marginX="auto">
-        <Image width={400} src="/assets/404 Error-rafiki.svg" />
-        <Link fontSize="xs" href="https://stories.freepik.com/web" isExternal>
-          Illustration by Freepik Stories
+    <Box
+      textAlign="center"
+      py={6}
+      px={6}
+      bg="white"
+      display="flex"
+      alignItems="center"
+      flexDirection="column"
+    >
+      <Text fontSize="18px" mt={3} mb={2} fontWeight="600" color="gray.900">
+        Page Not Found
+      </Text>
+      <Text color={"gray.500"} mb={6}>
+        The page you're looking for does not seem to exist
+      </Text>
+      <Text fontSize={30} fontWeight="800">
+        Art by{" "}
+        <Link
+          position="absolute"
+          left="70%"
+          top="50%"
+          transform="rotate(-90deg)"
+          color="blue.300"
+          href="https://dribbble.com/elinataka"
+          target="_blank"
+        >
+          {" "}
+          Elina Takahashi
         </Link>
-      </Box>
+      </Text>
+      <Image mt="-16" src="/assets/ElinaTakahashi.gif" alt="404" mb={6} />
 
-      <Box>
-        <Text>It&apos;s Okay!</Text>
-        <Button onClick={handleBackToHome}>Let&apos;s Head Back</Button>
-      </Box>
-    </Grid>
+      <Button
+        bgGradient="linear(to-r, blue.300, teal.200, blue.400)"
+        colorScheme={"blue"}
+        color="white"
+        variant="solid"
+        onClick={handleBackToHome}
+      >
+        Go to Home
+      </Button>
+    </Box>
   );
-};
-
-export default Page404;
+}

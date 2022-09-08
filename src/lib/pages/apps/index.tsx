@@ -15,7 +15,8 @@ import { useEffect, useState } from "react";
 export default function Apps() {
   const [state, dispatch] = useStateValue();
 
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState<any>([]);
+
   let getCategories = () => {
     dispatch({
       type: "SET_LOADING",
@@ -31,6 +32,7 @@ export default function Apps() {
       .then((res) => res.json())
       .then((data) => {
         setCategories(data);
+
         console.log(data);
         dispatch({
           type: "SET_LOADING",
@@ -50,7 +52,7 @@ export default function Apps() {
       <Box mb="2">
         <Swiper
           autoplay={{
-            delay: 5000,
+            delay: 10000,
             disableOnInteraction: false,
           }}
           effect={"coverflow"}
@@ -142,14 +144,17 @@ export default function Apps() {
           </SwiperSlide>
         </Swiper>
       </Box>
-      {categories.map((category: any) => {
+      {categories.map((category: any, i: number) => {
+        console.log(category);
         return (
           <Category
             path="apps"
             key={category._id}
             name={category.name}
             description={category.description}
-            apps={category.apps}
+            apps={category.apps.slice(0, 6)}
+            allApps={category.apps}
+            id={category._id}
           />
         );
       })}
