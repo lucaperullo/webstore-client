@@ -67,6 +67,8 @@ export default function AppDetail() {
           />
         </Flex>
         <Button
+          position="sticky"
+          top="60"
           as="a"
           href={app?.url}
           target="_blank"
