@@ -17,7 +17,10 @@ export default function Home() {
   return (
     <>
       <Stack
-        minW="800px"
+        minW={{
+          base: "100%",
+          xl: "800px",
+        }}
         as={Box}
         textAlign={"center"}
         spacing={{ base: 8, md: 14 }}
