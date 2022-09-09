@@ -57,70 +57,16 @@ export default function Apps() {
           }}
           effect={"coverflow"}
           coverflowEffect={{
-            rotate: 10,
-            stretch: 0,
-            depth: 10,
-            modifier: 2,
-            slideShadows: true,
+            rotate: 0,
+            stretch: 100,
+            depth: 50,
+            modifier: 1,
           }}
-          slidesPerView={1}
-          spaceBetween={30}
+          slidesPerView={2.5}
+          centeredSlides={true}
           loop={true}
-          pagination={{
-            clickable: true,
-          }}
-          navigation={true}
-          modules={[
-            Pagination,
-            Navigation,
-            EffectCube,
-            EffectCoverflow,
-            Autoplay,
-          ]}
-          className="mySwiper"
+          modules={[EffectCoverflow, Autoplay]}
         >
-          <SwiperSlide>
-            <Box
-              h="320px"
-              w="100%"
-              bgGradient="linear(to-r, green.200, pink.500)"
-            ></Box>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Box
-              h="320px"
-              w="100%"
-              bgGradient="linear(to-r, green.200, pink.500)"
-            ></Box>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Box
-              h="320px"
-              w="100%"
-              bgGradient="linear(to-r, green.200, pink.500)"
-            ></Box>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Box
-              h="320px"
-              w="100%"
-              bgGradient="linear(to-r, green.200, pink.500)"
-            ></Box>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Box
-              h="320px"
-              w="100%"
-              bgGradient="linear(to-r, green.200, pink.500)"
-            ></Box>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Box
-              h="320px"
-              w="100%"
-              bgGradient="linear(to-r, green.200, pink.500)"
-            ></Box>
-          </SwiperSlide>
           <SwiperSlide>
             <Box
               h="320px"

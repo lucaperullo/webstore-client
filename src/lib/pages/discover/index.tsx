@@ -60,9 +60,6 @@ export default function Discover() {
       <Box zIndex="3">
         <Hide below="xl">
           <Swiper
-            style={{
-              height: "110%!important",
-            }}
             autoplay={{
               delay: 10000,
               disableOnInteraction: false,
@@ -79,11 +76,7 @@ export default function Discover() {
             loop={true}
             modules={[EffectCoverflow, Autoplay]}
           >
-            <SwiperSlide
-              style={{
-                height: "100%!important",
-              }}
-            >
+            <SwiperSlide>
               <Box h="100%" w="100%">
                 <SimpleGrid columns={1}>
                   <Flex flexDir="column" alignItems="center">
