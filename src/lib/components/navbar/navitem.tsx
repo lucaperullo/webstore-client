@@ -32,25 +32,63 @@ export const NavItem = ({
       borderRadius="lg"
       role="group"
       cursor="pointer"
+      transition="0.3s ease"
       bg={
         active?.slice(1) == link.name.toString().toLowerCase() ||
         active?.toLowerCase() == link.path
           ? "cyan.400"
           : "transparent"
       }
-      _hover={{
-        bg: "cyan.400",
-        color: "white",
-      }}
+      color={
+        active?.slice(1) == link.name.toString().toLowerCase() ||
+        active?.toLowerCase() == link.path
+          ? "white"
+          : "gray.900"
+      }
+      _dark={
+        active?.slice(1) == link.name.toString().toLowerCase() ||
+        active?.toLowerCase() == link.path
+          ? {
+              bg: "cyan.600",
+              color: "white",
+              hover: {
+                bg: "cyan.500",
+              },
+            }
+          : {
+              _hover: {
+                bg: "gray.700",
+              },
+              bg: "transparent",
+              color: "gray.50",
+            }
+      }
+      _hover={
+        active?.slice(1) == link.name.toString().toLowerCase() ||
+        active?.toLocaleLowerCase() == link.path
+          ? {}
+          : {
+              bg: "cyan.100",
+              color: "gray.900",
+            }
+      }
       {...rest}
     >
       {icon && (
         <Icon
           mr="4"
           fontSize="16"
-          _groupHover={{
-            color: "white",
-          }}
+          _groupHover={
+            active?.slice(1) == link.name.toString().toLowerCase() ||
+            active?.toLowerCase() == link.path
+              ? {}
+              : {
+                  color: "black",
+                  _dark: {
+                    color: "white",
+                  },
+                }
+          }
           as={icon}
         />
       )}

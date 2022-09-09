@@ -69,8 +69,18 @@ export const SidebarContent = ({
       zIndex={100}
       h="full"
       {...rest}
+      overflowY="auto"
     >
       <Flex
+        bg="gray.50"
+        _dark={{
+          bg: "gray.900",
+        }}
+        zIndex={2}
+        position="sticky"
+        top={0}
+        mb="10"
+        flexDir="column"
         h="auto"
         alignItems="center"
         mx={{
@@ -82,8 +92,10 @@ export const SidebarContent = ({
         <Box
           cursor={"pointer"}
           display={{ base: "none", md: "flex" }}
-          h="auto"
-          w="180px"
+          h="60px"
+          w="200px"
+          mt="4"
+          ml="4"
           bgImage={"url(/assets/webstore_logo_long.svg)"}
           bgSize="cover"
           bgPosition="center"
@@ -92,17 +104,8 @@ export const SidebarContent = ({
         ></Box>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
         <InputGroup
-          position={{
-            base: "relative",
-            md: "absolute",
-          }}
-          top={{
-            base: "auto",
-            md: "10px",
-          }}
           w="full"
           px="4"
-          mt="2"
           onChange={(e: any) => {
             if (e.target.value.length > 0) {
               setIsSearchingData(true);
@@ -128,7 +131,7 @@ export const SidebarContent = ({
       </Flex>
 
       {!data ? (
-        <Box mt="65px">
+        <Box>
           {!!user
             ? LinkItems.concat(loggedInLinks)
                 .filter((r) => r.name !== "login")
@@ -176,12 +179,11 @@ export const SidebarContent = ({
             base: "calc(100vh - 48px)",
             md: "calc(100vh - 60px)",
           }}
-          overflowY="auto"
           pb="28"
           p="4"
           pt="0"
           w="full"
-          mt="65px"
+          mt="0px"
         >
           {data
             .sort(
