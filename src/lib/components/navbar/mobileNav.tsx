@@ -5,9 +5,6 @@ import {
   Flex,
   useColorModeValue,
   IconButton,
-  InputGroup,
-  InputLeftAddon,
-  Input,
   HStack,
   Menu,
   MenuButton,
@@ -17,12 +14,10 @@ import {
   MenuItem,
   MenuDivider,
   Link,
-  Button,
   useColorMode,
 } from "@chakra-ui/react";
-import { useStateValue } from "../../../context/stateProvider";
 
-import { FiMenu, FiSearch, FiBell, FiChevronDown } from "react-icons/fi";
+import { FiMenu, FiBell, FiChevronDown } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { BsMoonStarsFill, BsSun } from "react-icons/bs";
 

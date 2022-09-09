@@ -24,7 +24,7 @@ import { BsGrid } from "react-icons/bs";
 import { NavItem } from "./navitem";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 interface SidebarProps extends BoxProps {
   onClose: () => void;
@@ -42,6 +42,8 @@ export const SidebarContent = ({
   user,
   ...rest
 }: SidebarProps) => {
+  const location = useLocation();
+  console.log(location.pathname);
   const [searching, setSearching] = useState(false);
   const [isSearchingData, setIsSearchingData] = useState(false);
   const [data, setData] = useState<any>(null);
@@ -68,11 +70,19 @@ export const SidebarContent = ({
       h="full"
       {...rest}
     >
-      <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
+      <Flex
+        h="auto"
+        alignItems="center"
+        mx={{
+          base: 4,
+          md: 0,
+        }}
+        justifyContent="space-between"
+      >
         <Box
           cursor={"pointer"}
           display={{ base: "none", md: "flex" }}
-          h="100px"
+          h="auto"
           w="180px"
           bgImage={"url(/assets/webstore_logo_long.svg)"}
           bgSize="cover"
@@ -81,34 +91,44 @@ export const SidebarContent = ({
           onClick={() => navigate("/")}
         ></Box>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
-      </Flex>
-      <InputGroup
-        px="4"
-        my="2"
-        onChange={(e: any) => {
-          if (e.target.value.length > 0) {
-            setIsSearchingData(true);
+        <InputGroup
+          position={{
+            base: "relative",
+            md: "absolute",
+          }}
+          top={{
+            base: "auto",
+            md: "10px",
+          }}
+          w="full"
+          px="4"
+          mt="2"
+          onChange={(e: any) => {
+            if (e.target.value.length > 0) {
+              setIsSearchingData(true);
 
-            setSearching(true);
-            let url =
-              import.meta.env.VITE_BASE_URL + "search/" + e.target.value;
-            fetch(url)
-              .then((res) => res.json())
-              .then((data) => {
-                setIsSearchingData(false);
-                setData(data);
-              });
-          } else {
-            setSearching(false);
-            setData(null);
-          }
-        }}
-      >
-        <InputLeftAddon children={<FiSearch />} bg="transparent" />
-        <Input type="search" placeholder="Search" />
-      </InputGroup>
+              setSearching(true);
+              let url =
+                import.meta.env.VITE_BASE_URL + "search/" + e.target.value;
+              fetch(url)
+                .then((res) => res.json())
+                .then((data) => {
+                  setIsSearchingData(false);
+                  setData(data);
+                });
+            } else {
+              setSearching(false);
+              setData(null);
+            }
+          }}
+        >
+          <InputLeftAddon children={<FiSearch />} bg="transparent" />
+          <Input w="full" type="search" placeholder="Search" />
+        </InputGroup>
+      </Flex>
+
       {!data ? (
-        <>
+        <Box mt="65px">
           {!!user
             ? LinkItems.concat(loggedInLinks)
                 .filter((r) => r.name !== "login")
@@ -118,9 +138,16 @@ export const SidebarContent = ({
                     : link.name.toLocaleLowerCase();
                   return (
                     <Link to={linke} key={link.name}>
-                      <NavItem onClick={onClose} icon={link.icon}>
-                        {link.name}
-                      </NavItem>
+                      <Box p="2">
+                        <NavItem
+                          active={location.pathname}
+                          onClick={onClose}
+                          icon={link.icon}
+                          link={link}
+                        >
+                          {link.name}
+                        </NavItem>
+                      </Box>
                     </Link>
                   );
                 })
@@ -130,22 +157,26 @@ export const SidebarContent = ({
                   : link.name.toLocaleLowerCase();
                 return (
                   <Link to={linke} key={link.name}>
-                    <NavItem onClick={onClose} icon={link.icon}>
+                    <NavItem link={link} onClick={onClose} icon={link.icon}>
                       {link.name}
                     </NavItem>
                   </Link>
                 );
               })}
-        </>
+        </Box>
       ) : (
         <Flex
           direction="column"
-          h="60%"
+          h={{
+            base: "calc(100vh - 48px)",
+            md: "calc(100vh - 60px)",
+          }}
           overflowY="auto"
           pb="28"
           p="4"
           pt="0"
           w="full"
+          mt="65px"
         >
           {data
             .sort(
@@ -158,6 +189,10 @@ export const SidebarContent = ({
                 <Box
                   key={i}
                   my="2"
+                  w="full"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
                   onClick={() => {
                     onClose();
                   }}
@@ -174,7 +209,10 @@ export const SidebarContent = ({
                           direction="column"
                           w="full"
                           justifyContent="center"
-                          alignItems="flex-start"
+                          alignItems={{
+                            base: "center",
+                            md: "flex-start",
+                          }}
                         >
                           <Image
                             h="90px"
