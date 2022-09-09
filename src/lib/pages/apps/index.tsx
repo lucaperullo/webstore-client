@@ -79,7 +79,7 @@ export default function Apps() {
                       h="190px"
                       w="100%"
                       color="whatsapp.400"
-                      bg="white"
+                      bg="black"
                       _dark={{
                         bg: "whatsapp.300",
                         color: "white",
@@ -246,8 +246,21 @@ export default function Apps() {
                         size="lg"
                         width="full"
                         h="full"
-                        colorScheme="gray"
+                        colorScheme="purple"
+                        bgGradient={"linear(to-tr, purple.800,  whatsapp.600)"}
+                        _hover={{
+                          bgGradient:
+                            "linear(to-tr, purple.700,  whatsapp.500)",
+                          color: "white",
+                        }}
                         rightIcon={<ArrowForwardIcon />}
+                        color="white"
+                        _dark={{
+                          color: "white",
+                          _hover: {
+                            color: "white",
+                          },
+                        }}
                       >
                         Visit Ymusic
                       </Button>
@@ -377,7 +390,7 @@ export default function Apps() {
                       h="210px"
                       w="100%"
                       color="whatsapp.400"
-                      bg="white"
+                      bg="black"
                       _dark={{
                         bg: "whatsapp.300",
                         color: "white",
@@ -543,8 +556,23 @@ export default function Apps() {
                         size="lg"
                         width="full"
                         h="full"
-                        colorScheme="gray"
+                        colorScheme="purple"
+                        bgGradient={[
+                          "linear(to-tr, purple.800,  whatsapp.600)",
+                        ]}
                         rightIcon={<ArrowForwardIcon />}
+                        _hover={{
+                          bgGradient:
+                            "linear(to-tr, purple.800,  whatsapp.600)",
+                          color: "white",
+                        }}
+                        color="white"
+                        _dark={{
+                          color: "white",
+                          _hover: {
+                            color: "white",
+                          },
+                        }}
                       >
                         Visit Ymusic
                       </Button>

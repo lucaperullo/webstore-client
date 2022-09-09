@@ -83,10 +83,6 @@ export const SidebarContent = ({
         flexDir="column"
         h="auto"
         alignItems="center"
-        mx={{
-          base: 4,
-          md: 0,
-        }}
         justifyContent="space-between"
       >
         <Box
@@ -102,32 +98,37 @@ export const SidebarContent = ({
           bgRepeat="no-repeat"
           onClick={() => navigate("/")}
         ></Box>
-        <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
-        <InputGroup
-          w="full"
-          px="4"
-          onChange={(e: any) => {
-            if (e.target.value.length > 0) {
-              setIsSearchingData(true);
+        <Flex w="full" py="4" px="2" boxShadow="1px 1px #80808040">
+          <CloseButton
+            display={{ base: "flex", md: "none" }}
+            onClick={onClose}
+          />
+          <InputGroup
+            w="full"
+            px="4"
+            onChange={(e: any) => {
+              if (e.target.value.length > 0) {
+                setIsSearchingData(true);
 
-              setSearching(true);
-              let url =
-                import.meta.env.VITE_BASE_URL + "search/" + e.target.value;
-              fetch(url)
-                .then((res) => res.json())
-                .then((data) => {
-                  setIsSearchingData(false);
-                  setData(data);
-                });
-            } else {
-              setSearching(false);
-              setData(null);
-            }
-          }}
-        >
-          <InputLeftAddon children={<FiSearch />} bg="transparent" />
-          <Input w="full" type="search" placeholder="Search" />
-        </InputGroup>
+                setSearching(true);
+                let url =
+                  import.meta.env.VITE_BASE_URL + "search/" + e.target.value;
+                fetch(url)
+                  .then((res) => res.json())
+                  .then((data) => {
+                    setIsSearchingData(false);
+                    setData(data);
+                  });
+              } else {
+                setSearching(false);
+                setData(null);
+              }
+            }}
+          >
+            <InputLeftAddon children={<FiSearch />} bg="transparent" />
+            <Input w="full" type="search" placeholder="Search" />
+          </InputGroup>
+        </Flex>
       </Flex>
 
       {!data ? (
@@ -200,7 +201,10 @@ export const SidebarContent = ({
                   w="full"
                   display="flex"
                   alignItems="center"
-                  justifyContent="center"
+                  justifyContent={{
+                    base: "center",
+                    md: "flex-start",
+                  }}
                   onClick={() => {
                     onClose();
                   }}
@@ -233,12 +237,14 @@ export const SidebarContent = ({
                       </Link>
                     )}
                     {!!d.type && (
-                      <Link to={`/category/${d.type}/${d._id}`}>
-                        <Flex direction="column">
-                          <Text fontWeight={600}>{d.name}</Text>
-                          <Text color="gray.500">{d.type}</Text>
-                        </Flex>
-                      </Link>
+                      <Box justifySelf="flex-start" alignSelf="flex-start">
+                        <Link to={`/category/${d.type}/${d._id}`}>
+                          <Flex direction="column">
+                            <Text fontWeight={600}>{d.name}</Text>
+                            <Text color="gray.500">{d.type}</Text>
+                          </Flex>
+                        </Link>
+                      </Box>
                     )}
                   </motion.div>
                 </Box>
