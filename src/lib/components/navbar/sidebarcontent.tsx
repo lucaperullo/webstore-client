@@ -160,14 +160,16 @@ export const SidebarContent = ({
                   : link.name.toLocaleLowerCase();
                 return (
                   <Link to={linke} key={link.name}>
-                    <NavItem
-                      active={location.pathname}
-                      link={link}
-                      onClick={onClose}
-                      icon={link.icon}
-                    >
-                      {link.name}
-                    </NavItem>
+                    <Box p="2">
+                      <NavItem
+                        active={location.pathname}
+                        link={link}
+                        onClick={onClose}
+                        icon={link.icon}
+                      >
+                        {link.name}
+                      </NavItem>
+                    </Box>
                   </Link>
                 );
               })}

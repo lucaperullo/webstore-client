@@ -20,9 +20,6 @@ export const NavItem = ({
     console.log(children.toString().toLocaleLowerCase(), active);
     // remove first char from string active
   }, [children, active]);
-  function removeTrailingSlash(str: any) {
-    return str.replace(/\/+$/, "");
-  }
 
   return (
     <Flex
