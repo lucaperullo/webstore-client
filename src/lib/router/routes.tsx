@@ -11,6 +11,7 @@ import Apps from "lib/pages/apps";
 import AppDetail from "lib/pages/app-detail";
 import Page404 from "lib/pages/404";
 import SeeAllApps from "lib/pages/see-all";
+import Working from "lib/pages/working";
 
 export const routes: Array<PathRouteProps> = [
   {
@@ -26,7 +27,7 @@ export const routes: Array<PathRouteProps> = [
     element: <ForgotPassword />,
   },
   {
-    path: "/",
+    path: "/discover",
     element: <Discover />,
   },
   {
@@ -53,7 +54,7 @@ export const routes: Array<PathRouteProps> = [
 
 export const privateRoutes: Array<PathRouteProps> = [
   {
-    path: "/home",
+    path: "/",
     element: <Home />,
   },
   {
@@ -63,10 +64,10 @@ export const privateRoutes: Array<PathRouteProps> = [
 
   {
     path: "favourites",
-    element: <Home />,
+    element: <Working />,
   },
   {
     path: "settings",
-    element: <Home />,
+    element: <Working />,
   },
 ];

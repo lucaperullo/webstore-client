@@ -1,6 +1,7 @@
 export const initialState = {
   user: null,
   isLoading: true,
+  isHome: false,
 };
 
 export const reducer = (
@@ -21,6 +22,11 @@ export const reducer = (
       return {
         ...state,
         isLoading: action.payload,
+      };
+    case "SET_HOME":
+      return {
+        ...state,
+        isHome: action.payload,
       };
     default:
       return state;

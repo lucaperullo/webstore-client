@@ -36,6 +36,7 @@ interface LinkItemProps {
   path?: string;
   icon: IconType;
 }
+
 export const SidebarContent = ({
   onClose,
   navigate,
@@ -43,6 +44,7 @@ export const SidebarContent = ({
   ...rest
 }: SidebarProps) => {
   const location = useLocation();
+
   console.log(location.pathname);
   const [searching, setSearching] = useState(false);
   const [isSearchingData, setIsSearchingData] = useState(false);
@@ -137,11 +139,8 @@ export const SidebarContent = ({
             ? LinkItems.concat(loggedInLinks)
                 .filter((r) => r.name !== "login")
                 .map((link) => {
-                  let linke = link.path
-                    ? link.path
-                    : link.name.toLocaleLowerCase();
                   return (
-                    <Link to={linke} key={link.name}>
+                    <Link to={link.name.toLocaleLowerCase()} key={link.name}>
                       <Box p="2">
                         <NavItem
                           active={location.pathname}
@@ -156,11 +155,8 @@ export const SidebarContent = ({
                   );
                 })
             : LinkItems.map((link) => {
-                let linke = link.path
-                  ? link.path
-                  : link.name.toLocaleLowerCase();
                 return (
-                  <Link to={linke} key={link.name}>
+                  <Link to={link.name.toLocaleLowerCase()} key={link.name}>
                     <Box p="2">
                       <NavItem
                         active={location.pathname}

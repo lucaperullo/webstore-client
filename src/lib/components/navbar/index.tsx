@@ -24,6 +24,10 @@ export default function Navbar({ children }: { children: ReactNode }) {
     let url = import.meta.env.VITE_BASE_URL + "users/logout";
     fetch(url, {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
     })
       .then((res) => res.json())
       .then(() => {
@@ -37,10 +41,11 @@ export default function Navbar({ children }: { children: ReactNode }) {
             payload: false,
           });
         }, 1000);
-        navigate("/login");
+        navigate("/discover");
       });
   };
   let { user } = state;
+  let { isHome } = state;
 
   return (
     <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
@@ -49,22 +54,32 @@ export default function Navbar({ children }: { children: ReactNode }) {
         onClose={() => onClose}
         display={{ base: "none", md: "block" }}
         user={user}
+        transform={isHome ? "translateX(-100%)" : "translateX(0)"}
       />
-      <Drawer
-        autoFocus={false}
-        isOpen={isOpen}
-        placement="left"
-        onClose={onClose}
-        returnFocusOnClose={false}
-        onOverlayClick={onClose}
-        size="full"
-      >
-        <DrawerContent>
-          <SidebarContent user={user} onClose={onClose} navigate={navigate} />
-        </DrawerContent>
-      </Drawer>
+      <Box transform={!isHome ? "translateX(-100%)" : "translateX(0)"}>
+        <Drawer
+          autoFocus={false}
+          isOpen={isOpen}
+          placement="left"
+          onClose={onClose}
+          returnFocusOnClose={false}
+          onOverlayClick={onClose}
+          size="full"
+        >
+          <DrawerContent>
+            <SidebarContent user={user} onClose={onClose} navigate={navigate} />
+          </DrawerContent>
+        </Drawer>
+      </Box>
       {/* mobilenav */}
-      <MobileNav user={user} onOpen={onOpen} logout={logout} />
+
+      <MobileNav
+        user={user}
+        onOpen={onOpen}
+        logout={logout}
+        transform={isHome ? "translateY(-100%)" : "translateY(0)"}
+        transition="all 0.5s ease"
+      />
       <Box h="calc(100%-100px)" ml={{ base: 0, md: 60 }}>
         {children}
       </Box>
