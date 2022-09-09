@@ -49,11 +49,20 @@ export default function AppCard({
             xl: "auto",
           }}
           textAlign="center"
-          textOverflow="ellipsis"
-          overflow="hidden"
-          whiteSpace={"nowrap"}
+          textOverflow={{
+            base: "clip",
+            md: "ellipsis",
+          }}
+          overflow={{
+            base: "clip",
+            md: "hidden",
+          }}
+          whiteSpace={{
+            base: "break-spaces",
+            md: "nowrap",
+          }}
         >
-          {app.name}
+          {app?.name}
         </Text>
       </Link>
     </Flex>
