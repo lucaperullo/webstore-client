@@ -367,7 +367,7 @@ export default function Discover() {
             </SwiperSlide>
           </Swiper>
         </Hide>
-        <Hide above="lg">
+        <Hide above="xl">
           <Swiper
             autoplay={{
               delay: 10000,
