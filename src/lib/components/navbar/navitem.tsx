@@ -6,7 +6,7 @@ import { IconType } from "react-icons";
 interface NavItemProps extends FlexProps {
   icon: IconType;
   children: ReactText;
-  active?: string;
+  active: string;
   link: any;
 }
 export const NavItem = ({

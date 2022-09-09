@@ -157,7 +157,12 @@ export const SidebarContent = ({
                   : link.name.toLocaleLowerCase();
                 return (
                   <Link to={linke} key={link.name}>
-                    <NavItem link={link} onClick={onClose} icon={link.icon}>
+                    <NavItem
+                      active={location.pathname}
+                      link={link}
+                      onClick={onClose}
+                      icon={link.icon}
+                    >
                       {link.name}
                     </NavItem>
                   </Link>
@@ -184,7 +189,6 @@ export const SidebarContent = ({
               (a: any, b: any) => (a.type ? -1 : 1)
             )
             .map((d: any, i: number) => {
-              console.log(d, i);
               return (
                 <Box
                   key={i}
