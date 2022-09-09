@@ -11,6 +11,7 @@ export default function AppCard({
     image: string;
     name: string;
     icon: string;
+    price: string;
   };
   path: string;
 }) {
@@ -64,6 +65,8 @@ export default function AppCard({
         >
           {app?.name}
         </Text>
+        <br />
+        <Text>{app?.price}</Text>
       </Link>
     </Flex>
   );

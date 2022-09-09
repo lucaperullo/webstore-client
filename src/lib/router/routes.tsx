@@ -12,6 +12,7 @@ import AppDetail from "lib/pages/app-detail";
 import Page404 from "lib/pages/404";
 import SeeAllApps from "lib/pages/see-all";
 import Working from "lib/pages/working";
+import Paid from "lib/pages/paid";
 
 export const routes: Array<PathRouteProps> = [
   {
@@ -31,9 +32,14 @@ export const routes: Array<PathRouteProps> = [
     element: <Discover />,
   },
   {
+    path: "/paid",
+    element: <Paid />,
+  },
+  {
     path: "/detail/:path/:id",
     element: <AppDetail />,
   },
+
   {
     path: "/category/:path/:id",
     element: <SeeAllApps />,

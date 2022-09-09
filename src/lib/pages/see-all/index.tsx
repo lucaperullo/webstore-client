@@ -1,9 +1,10 @@
-import { Box, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, Flex, IconButton, SimpleGrid, Text } from "@chakra-ui/react";
 import { useStateValue } from "../../../context/stateProvider";
 import AppFullCard from "lib/components/app-full-card";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
+import { ArrowBackIcon } from "@chakra-ui/icons";
 
 export default function SeeAllApps() {
   const { path } = useParams();
@@ -39,9 +40,7 @@ export default function SeeAllApps() {
 
   return (
     <Box>
-      <Text
-        fontSize={22}
-        fontWeight={700}
+      <Flex
         bg="gray.100"
         position="sticky"
         p="8"
@@ -53,9 +52,22 @@ export default function SeeAllApps() {
           bg: "gray.900",
           borderBottom: "1px solid #2d3748",
         }}
+        justifyContent="space-between"
+        alignItems="center"
       >
-        {apps?.name}
-      </Text>
+        {" "}
+        <IconButton
+          size={"lg"}
+          aria-label="go back"
+          icon={<ArrowBackIcon />}
+          onClick={() => {
+            window.history.back();
+          }}
+        />
+        <Text fontSize={22} fontWeight={700}>
+          {apps?.name}
+        </Text>
+      </Flex>
       <SimpleGrid
         columns={{
           base: 1,

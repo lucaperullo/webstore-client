@@ -16,8 +16,9 @@ import {
   useColorModeValue,
   VStack,
   Image,
+  IconButton,
 } from "@chakra-ui/react";
-import { ArrowForwardIcon } from "@chakra-ui/icons";
+import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
 
 export default function AppDetail() {
   const [state, dispatch] = useStateValue();
@@ -53,6 +54,18 @@ export default function AppDetail() {
 
   return (
     <Container maxW={"7xl"}>
+      <Flex pt="4" w="full" justifyContent="flex-start" alignItems="center">
+        {" "}
+        <IconButton
+          size={"lg"}
+          aria-label="go back"
+          icon={<ArrowBackIcon />}
+          onClick={() => {
+            window.history.back();
+          }}
+        />
+        <Text>Go back</Text>
+      </Flex>
       <SimpleGrid
         columns={{ base: 1, lg: 2 }}
         spacing={{ base: 8, md: 10 }}
