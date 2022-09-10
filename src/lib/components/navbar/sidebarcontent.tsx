@@ -381,6 +381,7 @@ export const SidebarContent = ({
                             alt={d.name}
                           ></Image>
                           <Text>{d.name}</Text>
+                          <Text>{d?.price}</Text>
                         </Flex>
                       </Link>
                     )}
