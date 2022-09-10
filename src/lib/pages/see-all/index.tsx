@@ -64,9 +64,14 @@ export default function SeeAllApps() {
             window.history.back();
           }}
         />
-        <Text fontSize={22} fontWeight={700}>
-          {apps?.name}
-        </Text>
+        <Flex justifyContent={"space-between"} w="full" flexDir="column">
+          <Text fontSize={22} fontWeight={700}>
+            {apps?.name}
+          </Text>
+          <Text fontSize="2xl" fontWeight={100}>
+            {apps?.description}
+          </Text>
+        </Flex>
       </Flex>
       <SimpleGrid
         columns={{
