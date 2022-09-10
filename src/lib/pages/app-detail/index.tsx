@@ -75,6 +75,7 @@ export default function AppDetail() {
           <Box
             bgImage={`url(${app?.image})`}
             bgSize="cover"
+            bgPosition="center"
             w={{ base: "100px", sm: "300px", lg: "400px" }}
             h={{ base: "100px", sm: "300px", lg: "400px" }}
           />
