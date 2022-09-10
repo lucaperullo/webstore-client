@@ -96,7 +96,7 @@ export default function Apps() {
                         Spotify
                       </Text>
                       <Text w="full" textAlign={"center"} fontSize="lg">
-                        whatsapp is a digital music, podcast and video streaming
+                        Spotify is a digital music, podcast and video streaming
                         service that gives you access to millions of songs and
                         other content.
                       </Text>
@@ -407,7 +407,7 @@ export default function Apps() {
                         Spotify
                       </Text>
                       <Text w="full" textAlign={"center"} fontSize="md">
-                        whatsapp is a digital music, podcast and video streaming
+                        Spotify is a digital music, podcast and video streaming
                         service that gives you access to millions of songs and
                         other content.
                       </Text>
