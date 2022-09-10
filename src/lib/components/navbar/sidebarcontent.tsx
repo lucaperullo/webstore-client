@@ -54,7 +54,7 @@ export const SidebarContent = ({
     { name: "Discover", path: "/", icon: FiCompass },
     { name: "Games", icon: BiJoystick },
     { name: "Applications", icon: BsGrid },
-    // { name: "Paid", icon: FiDollarSign },
+    { name: "Paid", icon: FiDollarSign },
     { name: "login", icon: FiLogIn },
   ];
   const loggedInLinks: Array<LinkItemProps> = [
