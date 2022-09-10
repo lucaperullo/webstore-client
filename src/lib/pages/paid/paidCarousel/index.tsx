@@ -10,7 +10,8 @@ import {
 import { EffectCoverflow, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { BiGame } from "react-icons/bi";
+import { BiDollar, BiGame } from "react-icons/bi";
+import { BsCode } from "react-icons/bs";
 export default function PaidCarousel() {
   return (
     <Box>
@@ -37,23 +38,23 @@ export default function PaidCarousel() {
               <SimpleGrid columns={1}>
                 <Flex flexDir="column" alignItems="center">
                   <Box
-                    h="190px"
+                    h="310"
                     w="100%"
                     color="blue.400"
-                    bgImage="url(https://res.cloudinary.com/webstoreclouds/image/upload/v1662678361/Tutti-i-ruoli-di-League-of-Legends-e-i-migliori_jdrt2c.jpg)"
+                    bgImage="url(https://res.cloudinary.com/webstoreclouds/image/upload/v1662830856/Copilot_unhpzv.jpg)"
                     bgSize="cover"
-                    bgPosition="top"
+                    bgPosition="center"
                     p="10"
                     pt="2"
                     position="relative"
                   >
                     <Box
                       position="absolute"
-                      h="190"
+                      h="310"
                       backdropFilter="blur(2px)"
                       bg="
                       
-                     rgba(0, 0, 0, 0.5)"
+                     rgba(0, 0, 0, 0.2)"
                       w="100%"
                       top="0"
                       left="0"
@@ -62,56 +63,68 @@ export default function PaidCarousel() {
                     <Text
                       zIndex={2}
                       w="70%"
-                      top="50%"
+                      top="10%"
                       left="50%"
-                      transform={"translate(-50%, -50%)"}
+                      transform={"translate(-50%, -10%)"}
                       textAlign={"center"}
                       fontSize="lg"
                       color="white"
                       position="absolute"
                       userSelect="none"
                     >
-                      League of Legends is a team-based game with over 140
-                      champions to make epic plays with. Play now for free.
+                      GitHub Copilot is a new AI-powered code-completion tool
+                      that helps you write code faster and more efficiently.
+                      It’s available in Visual Studio Code, PyCharm, and other
+                      JetBrains IDEs.
                     </Text>
-                  </Box>
-                  <Flex
-                    h="120"
-                    w="100%"
-                    pt="0"
-                    justifyContent="space-between"
-                    alignItems="center"
-                  >
-                    <Image
-                      position="absolute"
-                      bottom="-10"
-                      right="-60"
-                      zIndex={10}
-                      h="308px"
-                      src="https://res.cloudinary.com/webstoreclouds/image/upload/v1662677192/Untitled_design_12_jfhv1j.svg"
-                      alt="dribbble"
-                    ></Image>
-                    <Image
-                      position="absolute"
-                      bottom="-28"
-                      left="-80"
-                      zIndex={10}
-                      h="408px"
-                      src="https://res.cloudinary.com/webstoreclouds/image/upload/v1662677495/Untitled_design_15_fs7wzu.svg"
-                    />
-                    <Button
-                      as="a"
-                      href="https://www.leagueoflegends.com/"
-                      target="_blank"
-                      size="lg"
-                      w="full"
-                      h="full"
-                      colorScheme="yellow"
-                      rightIcon={<BiGame />}
+                    <Flex
+                      h="120"
+                      w="100%"
+                      pt="0"
+                      justifyContent="space-between"
+                      alignItems="center"
                     >
-                      Play Now
-                    </Button>
-                  </Flex>
+                      <Image
+                        position="absolute"
+                        bottom="-20"
+                        right="-20"
+                        zIndex={10}
+                        h="308px"
+                        src="https://res.cloudinary.com/webstoreclouds/image/upload/v1662831697/Untitled_design_5_b3l4e3.png"
+                        alt="dribbble"
+                      ></Image>
+                      <Image
+                        position="absolute"
+                        bottom="-20"
+                        left="-20"
+                        zIndex={10}
+                        h="308px"
+                        src="https://res.cloudinary.com/webstoreclouds/image/upload/v1662831699/Untitled_design_4_vweefg.png"
+                      />
+                      <Button
+                        zIndex={1}
+                        position="absolute"
+                        bottom="0"
+                        left="0"
+                        borderRadius={0}
+                        h="120"
+                        as="a"
+                        href="https://github.com/enterprise/trial?ref_cta=free%2520trial&ref_loc=banner&ref_page=blog"
+                        target="_blank"
+                        size="lg"
+                        w="full"
+                        color="white"
+                        _hover={{
+                          bg: "white",
+                          color: "black",
+                        }}
+                        bg="transparent"
+                        rightIcon={<BsCode />}
+                      >
+                        Free Trial
+                      </Button>
+                    </Flex>
+                  </Box>
                 </Flex>
               </SimpleGrid>
             </Box>

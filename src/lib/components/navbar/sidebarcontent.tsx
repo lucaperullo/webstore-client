@@ -9,9 +9,29 @@ import {
   InputGroup,
   InputLeftAddon,
   Image,
+  InputRightAddon,
+  IconButton,
+  Button,
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverFooter,
+  PopoverHeader,
+  PopoverTrigger,
+  Portal,
+  Checkbox,
+  Tag,
 } from "@chakra-ui/react";
 import { IconType } from "react-icons";
-import { BiJoystick } from "react-icons/bi";
+import {
+  BiJoystick,
+  BiSort,
+  BiSortAZ,
+  BiSortDown,
+  BiSortUp,
+} from "react-icons/bi";
 import {
   FiCompass,
   FiLogIn,
@@ -19,11 +39,13 @@ import {
   FiSettings,
   FiSearch,
   FiDollarSign,
+  FiXCircle,
 } from "react-icons/fi";
+import { GoSettings } from "react-icons/go";
 import { BsGrid } from "react-icons/bs";
 
 import { NavItem } from "./navitem";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 
@@ -50,6 +72,10 @@ export const SidebarContent = ({
   const [searching, setSearching] = useState(false);
   const [isSearchingData, setIsSearchingData] = useState(false);
   const [data, setData] = useState<any>(null);
+  const [query, setQuery] = useState("");
+  const [priceHightoLow, setPriceHightoLow] = useState<Boolean | string>(
+    "null"
+  );
   const LinkItems: Array<LinkItemProps> = [
     { name: "Discover", path: "/", icon: FiCompass },
     { name: "Games", icon: BiJoystick },
@@ -61,6 +87,54 @@ export const SidebarContent = ({
     { name: "Favourites", icon: FiStar },
     { name: "Settings", icon: FiSettings },
   ];
+  const searchStuff = () => {
+    setIsSearchingData(true);
+
+    setSearching(true);
+    let url = import.meta.env.VITE_BASE_URL + "search/" + query;
+    let urlPrice = import.meta.env.VITE_BASE_URL + "search/" + query + "/price";
+
+    if (priceHightoLow === "null") {
+      fetch(url)
+        .then((res) => res.json())
+        .then((data) => {
+          setIsSearchingData(false);
+
+          setData(data);
+        });
+    } else if (priceHightoLow === true) {
+      fetch(urlPrice, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ priceHightoLow }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setIsSearchingData(false);
+
+          setData(data);
+        });
+    } else if (priceHightoLow === false) {
+      fetch(urlPrice, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ priceHightoLow }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setIsSearchingData(false);
+
+          setData(data);
+        });
+    }
+  };
+  useEffect(() => {
+    searchStuff();
+  }, [query, priceHightoLow]);
 
   return (
     <Box
@@ -74,6 +148,7 @@ export const SidebarContent = ({
       h="full"
       {...rest}
       overflowY="auto"
+      overflowX="hidden"
     >
       <Flex
         bg="gray.50"
@@ -109,28 +184,103 @@ export const SidebarContent = ({
           />
           <InputGroup
             w="full"
-            px="4"
+            px="2"
             onChange={(e: any) => {
-              if (e.target.value.length > 0) {
+              if (e.target.value.length > 1) {
                 setIsSearchingData(true);
-
-                setSearching(true);
-                let url =
-                  import.meta.env.VITE_BASE_URL + "search/" + e.target.value;
-                fetch(url)
-                  .then((res) => res.json())
-                  .then((data) => {
-                    setIsSearchingData(false);
-                    setData(data);
-                  });
+                setQuery(e.target.value);
               } else {
                 setSearching(false);
                 setData(null);
               }
             }}
           >
-            <InputLeftAddon children={<FiSearch />} bg="transparent" />
-            <Input w="full" type="search" placeholder="Search" />
+            <InputLeftAddon
+              w="35px"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              border="none"
+              p={0}
+              children={<FiSearch />}
+              bg="transparent"
+              position="absolute"
+            />
+            <Input
+              pl="8"
+              minW="120px"
+              w="full"
+              type="search"
+              placeholder="Search"
+            />
+            <InputRightAddon
+              p={0}
+              children={
+                <Popover>
+                  <PopoverTrigger>
+                    <IconButton
+                      mx="0"
+                      icon={<GoSettings />}
+                      aria-label={"filter-for"}
+                      borderLeftRadius="0"
+                    />
+                  </PopoverTrigger>{" "}
+                  <PopoverContent
+                    h={{
+                      md: "auto",
+                    }}
+                    w={{
+                      base: "99vw",
+                      md: "239px",
+                    }}
+                  >
+                    <PopoverArrow />
+                    <PopoverHeader display="flex" justifyContent="space-evenly">
+                      <Text>Filter for</Text>{" "}
+                      {priceHightoLow !== "null" && (
+                        <Tag
+                          onClick={() => setPriceHightoLow("null")}
+                          colorScheme="blue"
+                          cursor="pointer"
+                        >
+                          reset
+                          <FiXCircle />
+                        </Tag>
+                      )}
+                    </PopoverHeader>
+                    <PopoverCloseButton />
+                    <PopoverBody
+                      p={0}
+                      flexDir="column"
+                      display="flex"
+                      overflow="hidden"
+                    >
+                      <Button
+                        variant={priceHightoLow ? "ghost" : "solid"}
+                        colorScheme={priceHightoLow ? "gray" : "blue"}
+                        borderRadius={0}
+                        leftIcon={<BiSortDown />}
+                        onClick={() => setPriceHightoLow(false)}
+                      >
+                        Price: High to Low
+                      </Button>
+
+                      <Button
+                        variant={priceHightoLow === true ? "solid" : "ghost"}
+                        colorScheme={priceHightoLow === true ? "blue" : "gray"}
+                        borderRadius={0}
+                        leftIcon={<BiSortUp />}
+                        onClick={() => setPriceHightoLow(true)}
+                      >
+                        {" "}
+                        Price: Low to High
+                      </Button>
+                    </PopoverBody>
+                  </PopoverContent>
+                </Popover>
+              }
+              bg="transparent"
+            />
           </InputGroup>
         </Flex>
       </Flex>

@@ -24,6 +24,10 @@ export default function Home() {
     document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = "unset";
+      dispatch({
+        type: "SET_HOME",
+        payload: false,
+      });
     };
   }, []);
 
