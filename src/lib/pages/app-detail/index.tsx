@@ -53,10 +53,34 @@ export default function AppDetail() {
   }, [app]);
 
   return (
-    <Container maxW={"7xl"}>
-      <Flex pt="4" w="full" justifyContent="flex-start" alignItems="center">
+    <Container
+      maxW={{
+        base: "100%",
+        md: "7xl",
+      }}
+    >
+      <Flex
+        bg="gray.100"
+        position="sticky"
+        p={{
+          base: "0",
+          md: "4",
+          lg: "8",
+        }}
+        py="4"
+        top="20"
+        zIndex={2}
+        borderBottom="1px solid #e2e8f0"
+        _dark={{
+          bg: "gray.900",
+          borderBottom: "1px solid #2d3748",
+        }}
+        justifyContent="space-between"
+        alignItems="center"
+      >
         {" "}
         <IconButton
+          mr="8"
           size={"lg"}
           aria-label="go back"
           icon={<ArrowBackIcon />}
@@ -64,7 +88,14 @@ export default function AppDetail() {
             window.history.back();
           }}
         />
-        <Text>Go back</Text>
+        <Flex justifyContent={"space-between"} w="full" flexDir="column">
+          <Text fontSize={22} fontWeight={700}>
+            {app?.name}
+          </Text>
+          <Text fontSize="xl" fontWeight={100}>
+            {path}
+          </Text>
+        </Flex>
       </Flex>
       <SimpleGrid
         columns={{ base: 1, lg: 2 }}
@@ -103,23 +134,6 @@ export default function AppDetail() {
           Visit {app?.name}
         </Button>
         <Stack spacing={{ base: 6, md: 10 }}>
-          <Box as={"header"}>
-            <Heading
-              lineHeight={1.1}
-              fontWeight={600}
-              fontSize={{ base: "2xl", sm: "4xl", lg: "5xl" }}
-            >
-              {app?.name}
-            </Heading>
-            <Text
-              color={useColorModeValue("gray.900", "gray.400")}
-              fontWeight={300}
-              fontSize={"2xl"}
-            >
-              {path}
-            </Text>
-          </Box>
-
           <Stack
             spacing={{ base: 4, sm: 6 }}
             direction={"column"}

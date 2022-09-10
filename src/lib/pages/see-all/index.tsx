@@ -1,4 +1,11 @@
-import { Box, Flex, IconButton, SimpleGrid, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Container,
+  Flex,
+  IconButton,
+  SimpleGrid,
+  Text,
+} from "@chakra-ui/react";
 import { useStateValue } from "../../../context/stateProvider";
 import AppFullCard from "lib/components/app-full-card";
 import { useEffect, useState } from "react";
@@ -39,11 +46,20 @@ export default function SeeAllApps() {
   }, [id, path]);
 
   return (
-    <Box>
+    <Container
+      maxW={{
+        base: "100%",
+        md: "7xl",
+      }}
+    >
       <Flex
         bg="gray.100"
         position="sticky"
-        p="8"
+        p={{
+          base: "0",
+          md: "4",
+          lg: "8",
+        }}
         py="4"
         top="20"
         zIndex={2}
@@ -57,6 +73,7 @@ export default function SeeAllApps() {
       >
         {" "}
         <IconButton
+          mr="8"
           size={"lg"}
           aria-label="go back"
           icon={<ArrowBackIcon />}
@@ -68,7 +85,7 @@ export default function SeeAllApps() {
           <Text fontSize={22} fontWeight={700}>
             {apps?.name}
           </Text>
-          <Text fontSize="2xl" fontWeight={100}>
+          <Text fontSize="xl" fontWeight={100}>
             {apps?.description}
           </Text>
         </Flex>
@@ -159,6 +176,6 @@ export default function SeeAllApps() {
           </Box>
         ))} */}
       </SimpleGrid>
-    </Box>
+    </Container>
   );
 }

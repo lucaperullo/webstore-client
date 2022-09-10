@@ -28,7 +28,18 @@ export default function AppFullCard({
 }) {
   const navigate = useNavigate();
   return (
-    <Center py={6}>
+    <Center
+      py={6}
+      maxH={{
+        base: "full",
+        md: "sm",
+      }}
+      maxW={{
+        base: "full",
+        md: "sm",
+      }}
+      overflow="hidden"
+    >
       <Stack
         borderWidth="1px"
         borderRadius="lg"
@@ -37,7 +48,8 @@ export default function AppFullCard({
         alignItems="center"
         bg={useColorModeValue("white", "gray.900")}
         boxShadow={"2xl"}
-        padding={4}
+        padding={2}
+        py={4}
       >
         <Image objectFit="cover" h="100px" w="100px" src={app.image} />
 
@@ -49,15 +61,25 @@ export default function AppFullCard({
           p={1}
           pt={2}
         >
-          <Heading fontSize={"2xl"} fontFamily={"body"}>
+          <Heading
+            fontSize={{ base: "md", sm: "lg", lg: "xl" }}
+            fontFamily={"body"}
+            textOverflow="ellipsis"
+            whiteSpace="nowrap"
+            w={{
+              base: "100%",
+            }}
+            overflow="hidden"
+            textAlign={"center"}
+          >
             {app.name}
           </Heading>
 
           <Text
-            textAlign={"center"}
+            textAlign={"justify"}
             color={useColorModeValue("gray.700", "gray.400")}
             px={3}
-            h="100px"
+            h="120px"
             textOverflow={"ellipsis"}
             overflow={"hidden"}
           >
