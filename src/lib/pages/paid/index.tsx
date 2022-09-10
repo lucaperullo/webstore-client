@@ -31,7 +31,7 @@ export default function Paid() {
       type: "SET_LOADING",
       payload: true,
     });
-    let url = import.meta.env.VITE_BASE_URL + "category/discover";
+    let url = import.meta.env.VITE_BASE_URL + "category/paid";
     fetch(url, {
       method: "GET",
       headers: {
@@ -691,19 +691,20 @@ export default function Paid() {
           </Swiper>
         </Hide>
       </Box>
-      {categories.map((category: any) => {
-        return (
-          <Category
-            path="discover"
-            key={category._id}
-            name={category.name}
-            description={category.description}
-            apps={category.discoverz.slice(0, 6)}
-            allApps={category.discoverz}
-            id={category._id}
-          />
-        );
-      })}
+      {categories.length > 0 &&
+        categories.map((category: any) => {
+          return (
+            <Category
+              path="paid"
+              key={category._id}
+              name={category.name}
+              description={category.description}
+              apps={category.paids.slice(0, 6)}
+              allApps={category.paids}
+              id={category._id}
+            />
+          );
+        })}
     </Box>
   );
 }

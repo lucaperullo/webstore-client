@@ -102,7 +102,7 @@ export default function SeeAllApps() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3, delay: 0 + index * 0.05 }}
+                transition={{ duration: 0.3, delay: 0 + index * 0.005 }}
               >
                 {" "}
                 <AppFullCard app={app} path={path} />
@@ -118,12 +118,31 @@ export default function SeeAllApps() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3, delay: 0 + index * 0.05 }}
+                transition={{ duration: 0.3, delay: 0 + index * 0.005 }}
               >
                 {" "}
                 <AppFullCard app={app} path={path} />
               </motion.div>
             ))}
+          </>
+        )}
+
+        {path === "paid" && (
+          <>
+            {apps?.paids?.slice(6)?.map((app: any, index: number) => {
+              console.log(app);
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3, delay: 0 + index * 0.005 }}
+                >
+                  <AppFullCard app={app} path={path} />
+                </motion.div>
+              );
+            })}
           </>
         )}
 
