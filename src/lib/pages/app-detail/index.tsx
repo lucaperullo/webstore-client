@@ -58,6 +58,7 @@ export default function AppDetail() {
         base: "100%",
         md: "7xl",
       }}
+      p={0}
     >
       <Flex
         bg="gray.100"
@@ -81,6 +82,7 @@ export default function AppDetail() {
         {" "}
         <IconButton
           mr="8"
+          ml="4"
           size={"lg"}
           aria-label="go back"
           icon={<ArrowBackIcon />}
@@ -92,7 +94,14 @@ export default function AppDetail() {
           <Text fontSize={22} fontWeight={700}>
             {app?.name}
           </Text>
-          <Text fontSize="xl" fontWeight={100}>
+          <Text
+            fontSize={{
+              base: "sm",
+              md: "md",
+              lg: "xl",
+            }}
+            fontWeight={100}
+          >
             {path}
           </Text>
         </Flex>
@@ -112,6 +121,7 @@ export default function AppDetail() {
           />
         </Flex>
         <Button
+          mx="4"
           position={{ base: "unset", md: "sticky" }}
           top="60"
           as="a"
@@ -145,6 +155,7 @@ export default function AppDetail() {
           >
             <VStack spacing={{ base: 4, sm: 6 }}>
               <Text
+                p="4"
                 color={useColorModeValue("gray.500", "gray.400")}
                 fontSize={"2xl"}
                 fontWeight={"300"}

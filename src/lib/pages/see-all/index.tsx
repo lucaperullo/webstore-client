@@ -51,6 +51,7 @@ export default function SeeAllApps() {
         base: "100%",
         md: "7xl",
       }}
+      p={0}
     >
       <Flex
         bg="gray.100"
@@ -74,6 +75,7 @@ export default function SeeAllApps() {
         {" "}
         <IconButton
           mr="8"
+          ml="4"
           size={"lg"}
           aria-label="go back"
           icon={<ArrowBackIcon />}
@@ -85,7 +87,14 @@ export default function SeeAllApps() {
           <Text fontSize={22} fontWeight={700}>
             {apps?.name}
           </Text>
-          <Text fontSize="xl" fontWeight={100}>
+          <Text
+            fontSize={{
+              base: "sm",
+              md: "md",
+              lg: "xl",
+            }}
+            fontWeight={100}
+          >
             {apps?.description}
           </Text>
         </Flex>
@@ -98,7 +107,7 @@ export default function SeeAllApps() {
           xl: 4,
         }}
         spacing={4}
-        p="8"
+        p="4"
       >
         {path === "discover" && (
           <>
