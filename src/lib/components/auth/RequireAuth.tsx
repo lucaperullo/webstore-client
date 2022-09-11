@@ -12,7 +12,6 @@ const RequireAuth = ({
   redirectTo = "/login",
 }: PrivateRouteProps) => {
   const [state] = useStateValue();
-  console.log(state.user);
   // add your own authentication logic here
   const isAuthenticated = !!state.user;
 

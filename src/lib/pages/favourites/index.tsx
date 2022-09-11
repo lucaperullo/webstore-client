@@ -53,10 +53,10 @@ export default function Favourites() {
         </Text>
       </Flex>
       <Grid autoColumns="1fr" gap={6} mt="8" justifyContent={"center"}>
-        {favourites.map((app: any) => {
+        {favourites.map((app: any, i: number) => {
           let type = app.type ? "category" : "app";
           return type === "category" ? (
-            <GridItem colSpan={6}>
+            <GridItem colSpan={6} key={i}>
               {" "}
               <Category category={app} />
             </GridItem>
@@ -67,6 +67,7 @@ export default function Favourites() {
                 md: 2,
                 lg: 1,
               }}
+              key={i}
             >
               <AppCard app={app} />
             </GridItem>

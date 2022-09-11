@@ -12,7 +12,7 @@ import Welcome from "./welcome";
 import Features from "./features";
 export default function Home() {
   const location = useLocation();
-  console.log(location.pathname);
+
   let path = location.pathname.slice(1);
   const [state, dispatch] = useStateValue();
   const [swiperRef, setSwiperRef] = useState<any>(null);

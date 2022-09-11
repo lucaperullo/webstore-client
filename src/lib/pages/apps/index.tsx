@@ -27,7 +27,6 @@ export default function Apps() {
       .then((data) => {
         setCategories(data);
 
-        console.log(data);
         dispatch({
           type: "SET_LOADING",
           payload: false,
@@ -47,8 +46,11 @@ export default function Apps() {
         <AppsCarousel />
       </Box>
       {categories.map((category: any, i: number) => {
-        console.log(category);
-        return <Category category={category} />;
+        return (
+          <Box key={i}>
+            <Category category={category} />
+          </Box>
+        );
       })}
     </Box>
   );

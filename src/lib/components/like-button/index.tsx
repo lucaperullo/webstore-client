@@ -1,15 +1,17 @@
 import { Box, chakra, SimpleGrid, useToast } from "@chakra-ui/react";
 import { useStateValue } from "../../../context/stateProvider";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { FaRobot } from "react-icons/fa";
 
 export default function LikeButton({
   element,
   showCount,
+  countOnly,
 }: {
   element: { _id: string; likes: string[] };
-  showCount: boolean;
+  showCount?: boolean;
+  countOnly?: boolean;
 }) {
   const [state, dispatch] = useStateValue();
   const [liked, setLiked] = useState(false);
@@ -52,20 +54,18 @@ export default function LikeButton({
           type: "SET_USER",
           payload: res?.user,
         });
+        console.log(res);
         setLikeCount(res?.element?.likes?.length);
       }
     }
   };
 
   useEffect(() => {
-    if (state.user) {
-      if (element?.likes?.includes(state?.user?._id)) {
-        setLiked(true);
-      }
+    if (state?.user?.favourites?.includes(element._id)) {
+      setLiked(true);
     }
-
-    return () => {};
   }, [state?.user?.favourites]);
+
   return (
     <SimpleGrid columns={2} spacing={10} mt="2">
       <Box
@@ -84,7 +84,6 @@ export default function LikeButton({
         <chakra.p
           display={{
             base: "block",
-            lg: "none",
           }}
           ml="2"
           minW={{

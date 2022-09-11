@@ -60,7 +60,6 @@ export default function SignIn() {
         });
       }, 1000);
 
-      console.log(state);
       navigate("/");
     } else {
       toast({

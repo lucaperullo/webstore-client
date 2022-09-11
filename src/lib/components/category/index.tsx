@@ -53,7 +53,7 @@ export default function Category({ category }: { category: any }) {
             >
               {name}
             </chakra.h2>
-            <chakra.p
+            {/* <chakra.p
               display={{
                 base: "none",
                 lg: "block",
@@ -67,7 +67,7 @@ export default function Category({ category }: { category: any }) {
               textAlign="end"
             >
               SAVED BY &nbsp;{likeCount} &nbsp;PEOPLE
-            </chakra.p>
+            </chakra.p> */}
           </Flex>
           <Link to={`/category/${path || type}/${_id}`}>
             <Text
@@ -180,7 +180,7 @@ export default function Category({ category }: { category: any }) {
         </Hide>
       </Box>
       <Divider mt="2" />
-      <LikeButton element={category} showCount />
+      <LikeButton element={category} showCount={true} />
     </motion.div>
   );
 }

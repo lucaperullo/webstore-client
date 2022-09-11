@@ -67,8 +67,6 @@ export const SidebarContent = ({
   ...rest
 }: SidebarProps) => {
   const location = useLocation();
-
-  console.log(location.pathname);
   const [searching, setSearching] = useState(false);
   const [isSearchingData, setIsSearchingData] = useState(false);
   const [data, setData] = useState<any>(null);
@@ -133,7 +131,9 @@ export const SidebarContent = ({
     }
   };
   useEffect(() => {
-    searchStuff();
+    if (priceHightoLow !== "null") {
+      searchStuff();
+    }
   }, [query, priceHightoLow]);
 
   return (

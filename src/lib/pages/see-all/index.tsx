@@ -29,7 +29,6 @@ export default function SeeAllApps() {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setApps(data);
         dispatch({
           type: "SET_LOADING",
@@ -161,7 +160,6 @@ export default function SeeAllApps() {
         {path === "paid" && (
           <>
             {apps?.paids?.slice(6)?.map((app: any, index: number) => {
-              console.log(app);
               return (
                 <motion.div
                   key={index}

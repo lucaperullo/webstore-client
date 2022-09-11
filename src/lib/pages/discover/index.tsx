@@ -25,7 +25,7 @@ export default function Discover() {
       .then((res) => res.json())
       .then((data) => {
         setCategories(data);
-        console.log(data);
+
         dispatch({
           type: "SET_LOADING",
           payload: false,
@@ -44,8 +44,12 @@ export default function Discover() {
       <Box zIndex="3">
         <DiscoverCarousel />
       </Box>
-      {categories.map((category: any) => {
-        return <Category category={category} />;
+      {categories.map((category: any, i: number) => {
+        return (
+          <Box key={i}>
+            <Category category={category} />
+          </Box>
+        );
       })}
     </Box>
   );

@@ -35,6 +35,7 @@ export default function Profile() {
   const [state, dispatch] = useStateValue();
   const [newImage, setNewImage] = useState(null);
   const [newName, setNewName] = useState(null);
+  const [dragging, setDragging] = useState(false);
   const { user } = state;
   const putUserImage = async () => {
     if (newImage) {
@@ -61,6 +62,21 @@ export default function Profile() {
         isClosable: true,
       });
     }
+  };
+  const converImageTobase64 = (file: any) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+
+      fileReader.onerror = (error) => {
+        console.log(error);
+        reject(error);
+      };
+    });
   };
 
   return (
@@ -211,7 +227,9 @@ export default function Profile() {
                       _dark={{
                         bg: "gray.800",
                       }}
-                      src={user.image}
+                      src={
+                        !newImage ? user.image : converImageTobase64(newImage)
+                      }
                     />
                     <Button
                       type="button"
@@ -241,9 +259,19 @@ export default function Profile() {
                       color: "gray.50",
                     }}
                   >
-                    Cover photo
+                    Upload photo
                   </FormLabel>
                   <Flex
+                    onDragOver={(e) => {
+                      e.preventDefault();
+                      setDragging(true);
+                    }}
+                    onDrop={(e: any) => {
+                      e.preventDefault();
+                      setNewImage(e.dataTransfer.files[0]);
+                    }}
+                    as="label"
+                    htmlFor="file-upload"
                     mt={1}
                     justify="center"
                     px={6}
@@ -285,7 +313,6 @@ export default function Profile() {
                         alignItems="baseline"
                       >
                         <chakra.label
-                          htmlFor="file-upload"
                           cursor="pointer"
                           rounded="md"
                           fontSize="md"
@@ -301,7 +328,7 @@ export default function Profile() {
                             },
                           }}
                         >
-                          <span>Upload a file</span>
+                          <span>Click here to upload a file</span>
                           <VisuallyHidden>
                             <input
                               onChange={(e: any) => {
@@ -313,7 +340,6 @@ export default function Profile() {
                             />
                           </VisuallyHidden>
                         </chakra.label>
-                        <Text pl={1}>or drag and drop</Text>
                       </Flex>
                       <Text
                         fontSize="xs"
@@ -340,7 +366,7 @@ export default function Profile() {
                 }}
                 textAlign="right"
               >
-                <Button
+                {/* <Button
                   type="submit"
                   colorScheme="brand"
                   _focus={{
@@ -349,7 +375,7 @@ export default function Profile() {
                   fontWeight="md"
                 >
                   Save
-                </Button>
+                </Button> */}
               </Box>
             </chakra.form>
           </GridItem>

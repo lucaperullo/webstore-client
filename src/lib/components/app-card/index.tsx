@@ -14,7 +14,6 @@ export default function AppCard({
     path: string;
   };
 }) {
-  console.log(app);
   const navigate = useNavigate();
   return (
     <Flex flexDir="column" justifyContent="center" alignItems="center">

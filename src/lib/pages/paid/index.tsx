@@ -42,7 +42,7 @@ export default function Paid() {
       .then((res) => res.json())
       .then((data) => {
         setCategories(data);
-        console.log(data);
+
         dispatch({
           type: "SET_LOADING",
           payload: false,
@@ -62,8 +62,12 @@ export default function Paid() {
         <PaidCarousel />
       </Box>
       {categories.length > 0 &&
-        categories.map((category: any) => {
-          return <Category category={category} />;
+        categories.map((category: any, i: number) => {
+          return (
+            <Box key={i}>
+              <Category category={category} />
+            </Box>
+          );
         })}
     </Box>
   );

@@ -16,11 +16,6 @@ export const NavItem = ({
   link,
   ...rest
 }: NavItemProps) => {
-  useEffect(() => {
-    console.log(children.toString().toLocaleLowerCase(), active);
-    // remove first char from string active
-  }, [children, active]);
-
   return (
     <Flex
       align="center"
