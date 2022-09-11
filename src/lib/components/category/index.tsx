@@ -92,8 +92,6 @@ export default function Category({ category }: { category: any }) {
     return () => {};
   }, [state?.user?.likes]);
 
-  const starColor = useColorModeValue("orange", "yellow");
-
   return (
     <motion.div key={_id}>
       <Divider mt="2" />
@@ -172,6 +170,7 @@ export default function Category({ category }: { category: any }) {
                   name: string;
                   icon: string;
                   price: string;
+                  path: string;
                 },
                 index: number
               ) => (
@@ -185,7 +184,7 @@ export default function Category({ category }: { category: any }) {
 
                   // debounce 100ms
                 >
-                  <AppCard app={app} path={path} />
+                  <AppCard app={app} />
                 </motion.div>
               )
             )}
@@ -207,6 +206,7 @@ export default function Category({ category }: { category: any }) {
                     name: string;
                     icon: string;
                     price: string;
+                    path: string;
                   },
                   index: number
                 ) => (
@@ -225,7 +225,7 @@ export default function Category({ category }: { category: any }) {
 
                       // debounce 100ms
                     >
-                      <AppCard app={app} path={path} />
+                      <AppCard app={app} />
                     </motion.div>
                   </SwiperSlide>
                 )

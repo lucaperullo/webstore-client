@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 export default function AppCard({
   app,
-  path,
 }: {
   app: {
     _id: string;
@@ -12,9 +11,10 @@ export default function AppCard({
     name: string;
     icon: string;
     price: string;
+    path: string;
   };
-  path: string;
 }) {
+  console.log(app);
   const navigate = useNavigate();
   return (
     <Flex flexDir="column" justifyContent="center" alignItems="center">
@@ -26,7 +26,7 @@ export default function AppCard({
         alignItems="center"
         color="gray.900"
         _dark={{ color: "gray.100" }}
-        onClick={() => navigate(`/detail/${path}/${app._id}`)}
+        onClick={() => navigate(`/detail/${app.path}/${app._id}`)}
       >
         <Box
           _hover={{

@@ -10,7 +10,11 @@ import {
   Stack,
   Text,
   useColorModeValue,
+  useToast,
 } from "@chakra-ui/react";
+import { useStateValue } from "../../../context/stateProvider";
+import { useEffect, useState } from "react";
+import { FaRobot } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 export default function AppFullCard({
@@ -23,10 +27,67 @@ export default function AppFullCard({
     name: string;
     description: string;
     url: string;
+    likes: string[];
   };
   path: string;
 }) {
   const navigate = useNavigate();
+  const [state, dispatch] = useStateValue();
+  const [liked, setLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(app.likes.length);
+  const toast = useToast();
+  const likeElement = async (userId: string, appId: string) => {
+    if (!state.user) {
+      toast({
+        icon: <FaRobot />,
+        title: "Whoops it seems you are not logged in",
+        description: "Login or register to enjoy all our cool features",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+    } else {
+      // let star = document.getElementById(app._id);
+      // star?.classList.toggle("isActive");
+      setLiked(!liked);
+      let url =
+        import.meta.env.VITE_BASE_URL + "users/like" + `/${userId}/${appId}`;
+      const data = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+      const res = await data.json();
+      if (res.error) {
+        toast({
+          title: "Error",
+          description: res.error,
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
+      } else {
+        dispatch({
+          type: "SET_USER",
+          payload: res?.user,
+        });
+        setLikeCount(res?.element?.likes?.length);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (state.user) {
+      if (app.likes?.includes(state.user._id)) {
+        setLiked(true);
+      }
+    }
+
+    return () => {};
+  }, [state?.user?.likes]);
+
   return (
     <Center
       py={6}

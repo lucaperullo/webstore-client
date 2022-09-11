@@ -9,10 +9,12 @@ import {
 import AppCard from "lib/components/app-card";
 import Category from "lib/components/category";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useStateValue } from "../../../context/stateProvider";
 
 export default function Favourites() {
   const [{ favourites }, state, dispatch] = useStateValue();
+  const navigate = useNavigate();
   const getFavourites = async () => {
     let url = import.meta.env.VITE_BASE_URL + `users/favourites`;
     let res = await fetch(url, {
@@ -54,7 +56,7 @@ export default function Favourites() {
         return type === "category" ? (
           <Category category={app} />
         ) : (
-          <AppCard app={app} path={app.path} />
+          <AppCard app={app} />
         );
       })}
     </Container>
