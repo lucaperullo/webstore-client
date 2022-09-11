@@ -71,6 +71,7 @@ export default function Category({ category }: { category: any }) {
           </Flex>
           <Link to={`/category/${path || type}/${_id}`}>
             <Text
+              mt="3"
               fontSize={{
                 base: "sm",
                 md: "md",
