@@ -126,8 +126,8 @@ export const MobileNav = ({ logout, user, onOpen, ...rest }: MobileProps) => {
                   <MenuItem onClick={() => navigate("/profile")}>
                     Profile
                   </MenuItem>
-                  <MenuItem>Settings</MenuItem>
-                  <MenuItem>Billing</MenuItem>
+                  {/* <MenuItem>Settings</MenuItem>
+                  <MenuItem>Billing</MenuItem> */}
                   <MenuDivider />
                   <MenuItem onClick={() => logout()}>
                     <Link color="red.400">Sign out </Link>
