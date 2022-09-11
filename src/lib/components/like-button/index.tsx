@@ -61,7 +61,7 @@ export default function LikeButton({
   };
 
   useEffect(() => {
-    if (state?.user?.favourites?.includes(element._id)) {
+    if (state?.user?.favourites?.includes(element?._id)) {
       setLiked(true);
     }
   }, [state?.user?.favourites]);

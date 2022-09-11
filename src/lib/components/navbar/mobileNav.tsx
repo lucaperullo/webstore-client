@@ -36,7 +36,7 @@ export const MobileNav = ({ logout, user, onOpen, ...rest }: MobileProps) => {
       height="20"
       position="sticky"
       top={0}
-      zIndex={2}
+      zIndex={3}
       width="full"
       alignItems="center"
       bg={useColorModeValue("gray.50", "gray.900")}

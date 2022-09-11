@@ -39,7 +39,6 @@ export default function AppFullCard({
         base: "full",
         md: "sm",
       }}
-      overflow="hidden"
     >
       <Stack
         borderWidth="1px"
@@ -48,7 +47,7 @@ export default function AppFullCard({
         justifyContent="center"
         alignItems="center"
         bg={useColorModeValue("white", "gray.900")}
-        boxShadow={"2xl"}
+        boxShadow={"0px 20px 11px 0px rgb(0 0 0 / 5%)"}
         padding={2}
         py={4}
       >
