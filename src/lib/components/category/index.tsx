@@ -53,21 +53,6 @@ export default function Category({ category }: { category: any }) {
             >
               {name}
             </chakra.h2>
-            {/* <chakra.p
-              display={{
-                base: "none",
-                lg: "block",
-              }}
-              ml="2"
-              minW={{
-                base: "60px",
-              }}
-              fontSize="xs"
-              color="gray.500"
-              textAlign="end"
-            >
-              SAVED BY &nbsp;{likeCount} &nbsp;PEOPLE
-            </chakra.p> */}
           </Flex>
           <Link to={`/category/${path || type}/${_id}`}>
             <Text
