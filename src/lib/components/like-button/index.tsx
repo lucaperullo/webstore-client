@@ -65,7 +65,7 @@ export default function LikeButton({
     }
 
     return () => {};
-  }, [state?.user?.likes]);
+  }, [state?.user?.favourites]);
   return (
     <SimpleGrid columns={2} spacing={10} mt="2">
       <Box
