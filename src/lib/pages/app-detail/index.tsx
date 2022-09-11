@@ -19,6 +19,7 @@ import {
   IconButton,
 } from "@chakra-ui/react";
 import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
+import LikeButton from "lib/components/like-button";
 
 export default function AppDetail() {
   const [state, dispatch] = useStateValue();
@@ -143,6 +144,7 @@ export default function AppDetail() {
         >
           Visit {app?.name}
         </Button>
+        <LikeButton element={app} showCount={true} />
         <Stack spacing={{ base: 6, md: 10 }}>
           <Stack
             spacing={{ base: 4, sm: 6 }}
