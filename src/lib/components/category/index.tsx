@@ -179,7 +179,7 @@ export default function Category({ category }: { category: any }) {
           </Box>
         </Hide>
       </Box>
-      <Divider mt="2" />
+
       <LikeButton element={category} showCount={true} />
     </motion.div>
   );

@@ -85,7 +85,7 @@ export default function LikeButton({
           display={{
             base: "block",
           }}
-          ml="2"
+          mx="4"
           minW={{
             base: "60px",
           }}
