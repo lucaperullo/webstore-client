@@ -3,6 +3,8 @@ import {
   chakra,
   Container,
   Flex,
+  Grid,
+  GridItem,
   SimpleGrid,
   Text,
 } from "@chakra-ui/react";
@@ -50,15 +52,27 @@ export default function Favourites() {
           Favourites
         </Text>
       </Flex>
-
-      {favourites.map((app: any) => {
-        let type = app.type ? "category" : "app";
-        return type === "category" ? (
-          <Category category={app} />
-        ) : (
-          <AppCard app={app} />
-        );
-      })}
+      <Grid autoColumns="1fr" gap={6} mt="8" justifyContent={"center"}>
+        {favourites.map((app: any) => {
+          let type = app.type ? "category" : "app";
+          return type === "category" ? (
+            <GridItem colSpan={6}>
+              {" "}
+              <Category category={app} />
+            </GridItem>
+          ) : (
+            <GridItem
+              colSpan={{
+                base: 3,
+                md: 2,
+                lg: 1,
+              }}
+            >
+              <AppCard app={app} />
+            </GridItem>
+          );
+        })}
+      </Grid>
     </Container>
   );
 }
