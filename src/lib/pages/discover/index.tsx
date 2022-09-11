@@ -1,27 +1,10 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Hide,
-  Image,
-  SimpleGrid,
-  Text,
-} from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import "swiper/css/effect-coverflow";
 import Category from "lib/components/category";
-import {
-  Pagination,
-  Navigation,
-  EffectCoverflow,
-  EffectCube,
-  Autoplay,
-} from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
+
 import { useEffect, useState } from "react";
 import { useStateValue } from "../../../context/stateProvider";
-import styles from "./styles.module.css";
-import { ArrowForwardIcon } from "@chakra-ui/icons";
-import { motion } from "framer-motion";
+
 import DiscoverCarousel from "./discoverCarousel";
 
 export default function Discover() {
@@ -71,6 +54,7 @@ export default function Discover() {
             apps={category.discoverz.slice(0, 6)}
             allApps={category.discoverz}
             id={category._id}
+            likes={category?.likes}
           />
         );
       })}

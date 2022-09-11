@@ -72,6 +72,7 @@ export default function Paid() {
               apps={category.paids.slice(0, 6)}
               allApps={category.paids}
               id={category._id}
+              likes={category?.likes}
             />
           );
         })}

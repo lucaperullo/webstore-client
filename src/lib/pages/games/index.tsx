@@ -69,7 +69,8 @@ export default function Games() {
             description={category.description}
             apps={category.games.slice(0, 6)}
             allApps={category.games}
-            id={category._id}
+            likes={category?.likes}
+            id={category?._id}
           />
         );
       })}

@@ -2,6 +2,7 @@ export const initialState = {
   user: null,
   isLoading: true,
   isHome: false,
+  favourites: [],
 };
 
 export const reducer = (
@@ -28,6 +29,12 @@ export const reducer = (
         ...state,
         isHome: action.payload,
       };
+    case "SET_FAVOURITES":
+      return {
+        ...state,
+        favourites: action.payload,
+      };
+
     default:
       return state;
   }

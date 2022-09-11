@@ -1,10 +1,22 @@
-import { Divider, Flex, chakra, SimpleGrid, Box, Hide } from "@chakra-ui/react";
+import {
+  Divider,
+  Flex,
+  chakra,
+  SimpleGrid,
+  Box,
+  Hide,
+  Stack,
+  IconButton,
+  useToast,
+} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-
+import { HiOutlineStar, HiStar } from "react-icons/hi";
 import AppCard from "../app-card";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper";
+import { useStateValue } from "../../../context/stateProvider";
+import { useEffect, useState } from "react";
+import { FaRobot } from "react-icons/fa";
 
 export default function Category({
   apps,
@@ -13,6 +25,7 @@ export default function Category({
   path,
   allApps,
   id,
+  likes,
 }: {
   apps: any[];
   description: string;
@@ -20,15 +33,88 @@ export default function Category({
   path: string;
   allApps: any[];
   id: string;
+  likes: string[];
 }) {
+  const [state, dispatch] = useStateValue();
+  const [liked, setLiked] = useState(false);
+  const toast = useToast();
+  const likeElement = async (userId: string, appId: string) => {
+    if (!state.user) {
+      toast({
+        icon: <FaRobot />,
+        title: "Whoops it seems you are not logged in",
+        description: "Login or register to enjoy all our cool features",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+    } else {
+      let url =
+        import.meta.env.VITE_BASE_URL + "users/like" + `/${userId}/${appId}`;
+      const data = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+      const res = await data.json();
+      if (res.error) {
+        toast({
+          title: "Error",
+          description: res.error,
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
+      } else {
+        setLiked(!liked);
+        dispatch({
+          type: "SET_USER",
+          payload: res,
+        });
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (state.user) {
+      if (likes.includes(state.user._id)) {
+        setLiked(true);
+      }
+    }
+
+    return () => {};
+  }, [state.user]);
+
   return (
     <motion.div>
       <Divider mt="2" />
       <Box p="2">
         <Flex justifyContent="space-between">
-          <chakra.h2 fontSize="2xl" fontWeight="bold" my="2">
-            {name}
-          </chakra.h2>
+          <Flex alignItems="center">
+            <chakra.h2 fontSize="2xl" fontWeight="bold" my="2">
+              {name}
+            </chakra.h2>
+            <chakra.p fontSize="sm" color="gray.500" ml="4">
+              {likes?.length + (!!liked ? 1 : 0)}{" "}
+              {likes?.length > 0 ? "likes" : "like"}
+            </chakra.p>
+            <IconButton
+              ml="1"
+              onClick={() => likeElement(state?.user?._id, id)}
+              aria-label="Star"
+              icon={
+                liked ? (
+                  <HiStar fill="yellow" size={22} />
+                ) : (
+                  <HiOutlineStar size={22} />
+                )
+              }
+              borderRadius="full"
+              variant="ghost"
+            ></IconButton>
+          </Flex>
 
           <Link to={`/category/${path}/${id}`}>See all</Link>
         </Flex>

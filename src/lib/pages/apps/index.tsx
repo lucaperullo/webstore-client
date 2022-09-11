@@ -57,6 +57,7 @@ export default function Apps() {
             apps={category.apps.slice(0, 6)}
             allApps={category.apps}
             id={category._id}
+            likes={category?.likes}
           />
         );
       })}
