@@ -13,6 +13,7 @@ import Page404 from "lib/pages/404";
 import SeeAllApps from "lib/pages/see-all";
 import Working from "lib/pages/working";
 import Paid from "lib/pages/paid";
+import Favourites from "lib/pages/favourites";
 
 export const routes: Array<PathRouteProps> = [
   {
@@ -70,7 +71,7 @@ export const privateRoutes: Array<PathRouteProps> = [
 
   {
     path: "favourites",
-    element: <Working />,
+    element: <Favourites />,
   },
   {
     path: "settings",

@@ -45,18 +45,7 @@ export default function Discover() {
         <DiscoverCarousel />
       </Box>
       {categories.map((category: any) => {
-        return (
-          <Category
-            path="discover"
-            key={category._id}
-            name={category.name}
-            description={category.description}
-            apps={category.discoverz.slice(0, 6)}
-            allApps={category.discoverz}
-            id={category._id}
-            likes={category?.likes}
-          />
-        );
+        return <Category category={category} />;
       })}
     </Box>
   );

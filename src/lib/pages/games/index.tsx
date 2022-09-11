@@ -61,18 +61,7 @@ export default function Games() {
         <GamesCarousel />
       </Box>
       {categories.map((category: any) => {
-        return (
-          <Category
-            path="games"
-            key={category._id}
-            name={category.name}
-            description={category.description}
-            apps={category.games.slice(0, 6)}
-            allApps={category.games}
-            likes={category?.likes}
-            id={category?._id}
-          />
-        );
+        return <Category category={category} />;
       })}
     </Box>
   );

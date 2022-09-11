@@ -16,6 +16,28 @@ export default function Navbar({ children }: { children: ReactNode }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [state, dispatch] = useStateValue();
   const navigate = useNavigate();
+  const getFavourites = async () => {
+    let url = import.meta.env.VITE_BASE_URL + `users/favourites`;
+    let res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify(state.user.favourites),
+    });
+    let data = await res.json();
+    dispatch({
+      type: "SET_FAVOURITES",
+      payload: data,
+    });
+  };
+  useEffect(() => {
+    if (state.user) {
+      getFavourites();
+    }
+  }, [state.user]);
+
   const logout = () => {
     dispatch({
       type: "SET_LOADING",

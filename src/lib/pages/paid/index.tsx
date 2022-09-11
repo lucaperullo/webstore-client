@@ -63,18 +63,7 @@ export default function Paid() {
       </Box>
       {categories.length > 0 &&
         categories.map((category: any) => {
-          return (
-            <Category
-              path="paid"
-              key={category._id}
-              name={category.name}
-              description={category.description}
-              apps={category.paids.slice(0, 6)}
-              allApps={category.paids}
-              id={category._id}
-              likes={category?.likes}
-            />
-          );
+          return <Category category={category} />;
         })}
     </Box>
   );
