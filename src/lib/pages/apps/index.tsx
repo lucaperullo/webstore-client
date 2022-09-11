@@ -48,18 +48,7 @@ export default function Apps() {
       </Box>
       {categories.map((category: any, i: number) => {
         console.log(category);
-        return (
-          <Category
-            path="apps"
-            key={category._id}
-            name={category.name}
-            description={category.description}
-            apps={category.apps.slice(0, 6)}
-            allApps={category.apps}
-            id={category._id}
-            likes={category?.likes}
-          />
-        );
+        return <Category category={category} />;
       })}
     </Box>
   );
