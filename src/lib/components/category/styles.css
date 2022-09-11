@@ -1,0 +1,17 @@
+.heart {
+  width: 100px;
+  height: 100px;
+  background: url("https://res.cloudinary.com/webstoreclouds/image/upload/v1662910358/heart_ausu9x.png")
+    no-repeat;
+  background-position: 0 0;
+  cursor: pointer;
+  transition: background-position 1s steps(28);
+  transition-duration: 0s;
+  transform: scale(0.7);
+  margin: 0;
+  padding: 0;
+}
+.heart.isActive {
+  transition-duration: 1s;
+  background-position: -2800px 0;
+}

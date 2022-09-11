@@ -30,7 +30,9 @@ export default function Favourites() {
     });
   };
   useEffect(() => {
-    getFavourites();
+    if (state.user) {
+      getFavourites();
+    }
   }, [state.user]);
 
   return (

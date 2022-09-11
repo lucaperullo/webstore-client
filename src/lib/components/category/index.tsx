@@ -5,7 +5,7 @@ import {
   SimpleGrid,
   Box,
   Hide,
-  Stack,
+  Text,
   IconButton,
   useToast,
   useColorModeValue,
@@ -18,10 +18,24 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { useStateValue } from "../../../context/stateProvider";
 import { Key, useEffect, useState } from "react";
 import { FaRobot } from "react-icons/fa";
+import "./styles.css";
+import { BiHeart } from "react-icons/bi";
+import { BsFillHeartFill } from "react-icons/bs";
+import { ArrowDownIcon, ArrowRightIcon } from "@chakra-ui/icons";
 
 export default function Category({ category }: { category: any }) {
-  const { _id, name, apps, discoverz, games, paids, path, likes, description } =
-    category;
+  const {
+    _id,
+    name,
+    apps,
+    discoverz,
+    games,
+    paids,
+    path,
+    type,
+    likes,
+    description,
+  } = category;
   const [state, dispatch] = useStateValue();
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(likes.length);
@@ -37,6 +51,8 @@ export default function Category({ category }: { category: any }) {
         isClosable: true,
       });
     } else {
+      let star = document.getElementById(_id);
+      star?.classList.toggle("isActive");
       setLiked(!liked);
       let url =
         import.meta.env.VITE_BASE_URL + "users/like" + `/${userId}/${appId}`;
@@ -79,40 +95,55 @@ export default function Category({ category }: { category: any }) {
   const starColor = useColorModeValue("orange", "yellow");
 
   return (
-    <motion.div>
+    <motion.div key={_id}>
       <Divider mt="2" />
-      <Box p="2">
+      <Box p="2" position="relative" overflow="hidden">
         <Flex justifyContent="space-between">
-          <Flex alignItems="center">
-            <chakra.h2 fontSize="2xl" fontWeight="bold" my="2">
+          <Flex alignItems="baseline" position="relative" w="full">
+            <chakra.h2
+              fontSize="2xl"
+              fontWeight="bold"
+              my="2"
+              maxW={{
+                base: "75%",
+              }}
+            >
               {name}
             </chakra.h2>
-            <chakra.p fontSize="sm" color="gray.500" ml="4">
-              {likeCount} {likeCount > 0 ? "star" : "stars"}
+            <chakra.p
+              display={{
+                base: "none",
+                lg: "block",
+              }}
+              ml="2"
+              minW={{
+                base: "60px",
+              }}
+              fontSize="xs"
+              color="gray.500"
+              textAlign="end"
+            >
+              SAVED BY &nbsp;{likeCount} &nbsp;PEOPLE
             </chakra.p>
-            <IconButton
-              ml="1"
-              aria-label="Star"
-              icon={
-                liked ? (
-                  <HiStar
-                    onClick={() => likeElement(state?.user?._id, _id)}
-                    fill={starColor}
-                    size={22}
-                  />
-                ) : (
-                  <HiOutlineStar
-                    onClick={() => likeElement(state?.user?._id, _id)}
-                    size={22}
-                  />
-                )
-              }
-              borderRadius="full"
-              variant="ghost"
-            ></IconButton>
           </Flex>
-
-          <Link to={`/category/${path}/${_id}`}>See all</Link>
+          <Link to={`/category/${path || type}/${_id}`}>
+            <Text
+              fontSize={{
+                base: "sm",
+                md: "md",
+                lg: "lg",
+              }}
+              w="auto"
+              minW="140px"
+              display="flex"
+              justifyContent="space-between"
+              px="2"
+              alignItems="center"
+            >
+              Show more
+              <ArrowDownIcon transform="rotate(270deg)" />
+            </Text>
+          </Link>
         </Flex>
         <chakra.h3
           mb="10"
@@ -203,6 +234,36 @@ export default function Category({ category }: { category: any }) {
           </Box>
         </Hide>
       </Box>
+      <Divider mt="2" />
+      <SimpleGrid columns={2} spacing={10} mt="2">
+        <Box
+          mr="-10"
+          onClick={() => likeElement(state.user._id, _id)}
+          h="100px"
+          w="100px"
+          id={_id}
+          className={`heart ${liked && "isActive"}`}
+          textOverflow="ellipsis"
+          whiteSpace="nowrap"
+        >
+          {liked ? "Remove from" : "Add to"} favourites
+        </Box>
+        <chakra.p
+          display={{
+            base: "block",
+            lg: "none",
+          }}
+          ml="2"
+          minW={{
+            base: "60px",
+          }}
+          fontSize="xs"
+          color="gray.500"
+          textAlign="end"
+        >
+          SAVED BY &nbsp;{likeCount} &nbsp;PEOPLE
+        </chakra.p>
+      </SimpleGrid>
     </motion.div>
   );
 }
