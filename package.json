@@ -10,6 +10,7 @@
   "dependencies": {
     "@chakra-ui/icons": "^2.0.9",
     "@chakra-ui/react": "^2.2.9",
+    "@ctrl/react-adsense": "^1.6.0",
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
     "@fontsource/plus-jakarta-sans": "^4.5.9",

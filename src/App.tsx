@@ -13,6 +13,7 @@ import Loader from "lib/loader";
 import { useEffect, useState } from "react";
 import { authorise } from "./guard";
 import { useStateValue } from "./context/stateProvider";
+import CookieBanner from "lib/cookie-banner";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -54,6 +55,7 @@ const App = () => {
             <Routings />
           </Navbar>
         </Router>
+        <CookieBanner />
       </Box>
     </ChakraProvider>
   );
