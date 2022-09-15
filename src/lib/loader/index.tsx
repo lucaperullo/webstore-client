@@ -26,7 +26,7 @@ export default function Loader() {
       display="flex"
       justifyContent="center"
       alignItems="center"
-      bg="rgba(0,0,0,0.8)"
+      bg="rgba(0,0,0,0.4)"
       backdropFilter={"blur(2px)"}
     >
       <Box
@@ -37,8 +37,21 @@ export default function Loader() {
         p={8}
         borderRadius="md"
       >
-        <Spinner size="xl" color="white" />
-        <Text color="white">Loading </Text>
+        <Spinner
+          size="xl"
+          color="gray.800"
+          _dark={{
+            color: "gray.100",
+          }}
+        />
+        <Text
+          color="gray.800"
+          _dark={{
+            color: "gray.100",
+          }}
+        >
+          Loading{" "}
+        </Text>
       </Box>
     </Box>
   );
