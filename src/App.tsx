@@ -1,5 +1,5 @@
-import { Box, ChakraProvider, Portal } from "@chakra-ui/react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Box, ChakraProvider } from "@chakra-ui/react";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import Routings from "lib/router/Routings";
 import { theme } from "lib/styles/customTheme";
