@@ -323,10 +323,8 @@ export const SidebarContent = ({
                   </Link>
                 );
               })}
-          <Box minH="400px" bg="red">
-            {" "}
-            <AdvertiseFluid />
-          </Box>
+
+          <AdvertiseFluid />
         </Box>
       ) : (
         <Flex
