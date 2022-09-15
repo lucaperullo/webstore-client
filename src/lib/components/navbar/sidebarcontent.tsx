@@ -48,6 +48,7 @@ import { NavItem } from "./navitem";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
+import AdvertiseFluid from "../ads/fluid-ad";
 
 interface SidebarProps extends BoxProps {
   onClose: () => void;
@@ -322,6 +323,10 @@ export const SidebarContent = ({
                   </Link>
                 );
               })}
+          <Box minH="400px" bg="red">
+            {" "}
+            <AdvertiseFluid />
+          </Box>
         </Box>
       ) : (
         <Flex

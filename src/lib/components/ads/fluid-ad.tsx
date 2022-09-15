@@ -3,9 +3,9 @@ export default function AdvertiseFluid() {
   return (
     <Adsense
       client="ca-pub-2089021211379947"
-      slot="7259870550"
+      slot="7154515105"
       style={{ display: "block" }}
-      layout="in-article"
+      layout="display"
       format="fluid"
     />
   );
