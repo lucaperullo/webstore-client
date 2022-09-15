@@ -5,6 +5,7 @@ import Category from "lib/components/category";
 import { useStateValue } from "../../../context/stateProvider";
 import { useEffect, useState } from "react";
 import AppsCarousel from "./appsCarousel";
+import CategorySkeleton from "lib/skeletons";
 
 export default function Apps() {
   const [state, dispatch] = useStateValue();
@@ -52,6 +53,8 @@ export default function Apps() {
           </Box>
         );
       })}
+      {!categories.length &&
+        Array.from(Array(5)).map((_, i) => <CategorySkeleton key={i} />)}
     </Box>
   );
 }

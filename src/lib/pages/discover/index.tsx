@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useStateValue } from "../../../context/stateProvider";
 
 import DiscoverCarousel from "./discoverCarousel";
+import CategorySkeleton from "lib/skeletons";
 
 export default function Discover() {
   const [state, dispatch] = useStateValue();
@@ -24,12 +25,14 @@ export default function Discover() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setCategories(data);
+        setTimeout(() => {
+          setCategories(data);
 
-        dispatch({
-          type: "SET_LOADING",
-          payload: false,
-        });
+          dispatch({
+            type: "SET_LOADING",
+            payload: false,
+          });
+        }, 1000);
       })
       .catch((err) => {
         console.log(err);
@@ -51,6 +54,8 @@ export default function Discover() {
           </Box>
         );
       })}
+      {!categories.length &&
+        Array.from(Array(5)).map((_, i) => <CategorySkeleton key={i} />)}
     </Box>
   );
 }

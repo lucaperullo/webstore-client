@@ -40,7 +40,7 @@ export default function Category({ category }: { category: any }) {
   return (
     <motion.div key={_id}>
       <Divider mt="2" />
-      <Box p="2" position="relative" overflow="hidden">
+      <Box p="4" position="relative" overflow="hidden">
         <Flex justifyContent="space-between">
           <Flex alignItems="baseline" position="relative" w="full">
             <chakra.h2

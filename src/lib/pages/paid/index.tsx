@@ -23,6 +23,7 @@ import styles from "./styles.module.css";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { motion } from "framer-motion";
 import PaidCarousel from "./paidCarousel";
+import CategorySkeleton from "lib/skeletons";
 
 export default function Paid() {
   const [state, dispatch] = useStateValue();
@@ -69,6 +70,8 @@ export default function Paid() {
             </Box>
           );
         })}
+      {!categories.length &&
+        Array.from(Array(5)).map((_, i) => <CategorySkeleton key={i} />)}
     </Box>
   );
 }
