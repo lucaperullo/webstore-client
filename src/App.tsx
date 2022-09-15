@@ -26,12 +26,11 @@ const App = () => {
   };
   const start = async () => {
     await authorise(setUser);
-    setTimeout(() => {
-      dispatch({
-        type: "SET_LOADING",
-        payload: false,
-      });
-    }, 1300);
+
+    dispatch({
+      type: "SET_LOADING",
+      payload: false,
+    });
   };
 
   useEffect(() => {

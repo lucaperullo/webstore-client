@@ -36,14 +36,12 @@ export default function AppDetail() {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        setTimeout(() => {
-          setApp(data);
+        setApp(data);
 
-          dispatch({
-            type: "SET_LOADING",
-            payload: false,
-          });
-        }, 1000);
+        dispatch({
+          type: "SET_LOADING",
+          payload: false,
+        });
       });
   };
   useEffect(() => {

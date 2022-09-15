@@ -53,12 +53,11 @@ export default function SignIn() {
         type: "SET_USER",
         payload: user,
       });
-      setTimeout(() => {
-        dispatch({
-          type: "SET_LOADING",
-          payload: false,
-        });
-      }, 1000);
+
+      dispatch({
+        type: "SET_LOADING",
+        payload: false,
+      });
 
       navigate("/");
     } else {
@@ -69,12 +68,11 @@ export default function SignIn() {
         duration: 9000,
         isClosable: true,
       });
-      setTimeout(() => {
-        dispatch({
-          type: "SET_LOADING",
-          payload: false,
-        });
-      }, 1000);
+
+      dispatch({
+        type: "SET_LOADING",
+        payload: false,
+      });
     }
   };
 

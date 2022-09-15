@@ -57,12 +57,12 @@ export default function Navbar({ children }: { children: ReactNode }) {
           type: "SET_USER",
           payload: null,
         });
-        setTimeout(() => {
-          dispatch({
-            type: "SET_LOADING",
-            payload: false,
-          });
-        }, 1000);
+
+        dispatch({
+          type: "SET_LOADING",
+          payload: false,
+        });
+
         navigate("/discover");
       });
   };

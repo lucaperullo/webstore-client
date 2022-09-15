@@ -25,14 +25,12 @@ export default function Discover() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setTimeout(() => {
-          setCategories(data);
+        setCategories(data);
 
-          dispatch({
-            type: "SET_LOADING",
-            payload: false,
-          });
-        }, 1000);
+        dispatch({
+          type: "SET_LOADING",
+          payload: false,
+        });
       })
       .catch((err) => {
         console.log(err);
