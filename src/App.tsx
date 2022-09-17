@@ -48,7 +48,7 @@ const App = () => {
   return (
     <ChakraProvider theme={theme}>
       <Box>
-        {state.isLoading && <Loader />}
+        <Loader />
 
         <Router>
           <Navbar>
