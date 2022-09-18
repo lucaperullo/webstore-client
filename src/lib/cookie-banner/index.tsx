@@ -11,13 +11,13 @@ export default function CookieBanner() {
   const onClose = () => setShowModal(false);
   const onOpen = () => setShowModal(true);
 
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-    return () => {
-      // enable scrolling on unmount
-      document.body.style.overflow = "unset";
-    };
-  }, []);
+  // useEffect(() => {
+  //   document.body.style.overflow = "hidden";
+  //   return () => {
+  //     // enable scrolling on unmount
+  //     document.body.style.overflow = "unset";
+  //   };
+  // }, []);
 
   return (
     <Box
