@@ -16,7 +16,13 @@ export default function AppCard({
 }) {
   const navigate = useNavigate();
   return (
-    <Flex flexDir="column" justifyContent="center" alignItems="center">
+    <Flex
+      flexDir="column"
+      justifyContent="center"
+      alignItems="center"
+      maxW="90px"
+      overflow={"hidden"}
+    >
       <Link
         userSelect="none"
         display="flex"
@@ -40,26 +46,17 @@ export default function AppCard({
           borderRadius={30}
           h="90px"
           w="90px"
+          maxW="90px"
+          overflow={"hidden"}
           position="relative"
         ></Box>
         <Text
-          w={{
-            base: "140px",
-            lg: "140px",
-            xl: "auto",
-          }}
+          w="100%"
           textAlign="center"
-          textOverflow={{
-            base: "clip",
-            md: "ellipsis",
-          }}
-          overflow={{
-            base: "clip",
-            md: "hidden",
-          }}
-          whiteSpace={{
-            base: "break-spaces",
-            md: "nowrap",
+          fontSize={{
+            base: "sm",
+            md: "md",
+            lg: "lg",
           }}
         >
           {app?.name}
