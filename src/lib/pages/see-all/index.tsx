@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowBackIcon } from "@chakra-ui/icons";
+import Title from "lib/components/title";
 
 export default function SeeAllApps() {
   const { path } = useParams();
@@ -52,6 +53,7 @@ export default function SeeAllApps() {
       }}
       p={0}
     >
+      <Title title={apps?.name} description={apps?.description} />
       <Flex
         bg="gray.100"
         position="sticky"
