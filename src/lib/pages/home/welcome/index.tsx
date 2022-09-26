@@ -143,12 +143,18 @@ export default function Welcome({ slide }: { slide: () => void }) {
         }}
         mx="auto"
         textAlign="center"
+        _hover={{
+          _dark: {
+            transform: "translateY(-5px)",
+          },
+        }}
       >
         <motion.div
           //   make the image float around of little bit with shadow
           animate={{
             y: [0, 10, 0, -10, 5],
             x: [10, 5, 0, -5, -10],
+
             boxShadow: [
               "0px 0px 0px rgba(0, 0, 0, 0.1)",
               "0px 10px 10px rgba(0, 0, 0, 0.2)",
