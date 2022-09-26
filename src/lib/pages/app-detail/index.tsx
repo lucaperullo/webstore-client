@@ -57,7 +57,7 @@ export default function AppDetail() {
       }}
       p={0}
     >
-      <Title title={app?.name} description={app?.description} />
+      <Title title={`Webstore | ${app?.name}`} description={app?.description} />
       {app ? (
         <>
           <Flex
