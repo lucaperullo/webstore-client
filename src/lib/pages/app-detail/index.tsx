@@ -21,6 +21,7 @@ import {
 import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
 import LikeButton from "lib/components/like-button";
 import Loader from "lib/components/loader";
+import Title from "lib/components/title";
 
 export default function AppDetail() {
   const [state, dispatch] = useStateValue();
@@ -56,6 +57,7 @@ export default function AppDetail() {
       }}
       p={0}
     >
+      <Title title={app?.name} description={app?.description} />
       {app ? (
         <>
           <Flex

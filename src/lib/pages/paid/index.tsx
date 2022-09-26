@@ -24,6 +24,7 @@ import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { motion } from "framer-motion";
 import PaidCarousel from "./paidCarousel";
 import CategorySkeleton from "lib/components/skeletons";
+import Title from "lib/components/title";
 
 export default function Paid() {
   const [state, dispatch] = useStateValue();
@@ -59,6 +60,10 @@ export default function Paid() {
 
   return (
     <Box as="div" height="100%" overflowX="hidden">
+      <Title
+        title="Webstore | Premium apps & games"
+        description="Premium apps & games"
+      />
       <Box zIndex="3">
         <PaidCarousel />
       </Box>
