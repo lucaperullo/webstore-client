@@ -7,6 +7,7 @@ import { useStateValue } from "../../../context/stateProvider";
 
 import DiscoverCarousel from "./discoverCarousel";
 import CategorySkeleton from "lib/components/skeletons";
+import Title from "lib/components/title";
 
 export default function Discover() {
   const [state, dispatch] = useStateValue();
@@ -42,6 +43,7 @@ export default function Discover() {
 
   return (
     <Box as="div" height="100%" overflowX="hidden">
+      <Title title="WebStore | Discover" description="Discover new apps" />
       <Box zIndex="3">
         <DiscoverCarousel />
       </Box>

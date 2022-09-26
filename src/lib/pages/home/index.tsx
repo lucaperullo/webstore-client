@@ -10,6 +10,7 @@ import { Virtual, EffectCoverflow, Mousewheel, Pagination } from "swiper";
 import "swiper/css/pagination";
 import Welcome from "./welcome";
 import Features from "./features";
+import Title from "lib/components/title";
 export default function Home() {
   const location = useLocation();
 
@@ -41,7 +42,10 @@ export default function Home() {
       left={state.isHome ? "0" : "unset"}
       w={state.isHome ? "100%" : "unset"}
     >
-      {" "}
+      <Title
+        title="Webstore | Learn more"
+        description="Learn more about the project"
+      />{" "}
       <Swiper
         onSwiper={setSwiperRef}
         style={{
