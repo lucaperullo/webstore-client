@@ -22,7 +22,7 @@ import { useEffect, useState } from "react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { BiGame } from "react-icons/bi";
 import GamesCarousel from "./gamesCarousel";
-import CategorySkeleton from "lib/skeletons";
+import CategorySkeleton from "lib/components/skeletons";
 
 export default function Games() {
   const [state, dispatch] = useStateValue();

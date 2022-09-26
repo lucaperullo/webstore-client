@@ -14,9 +14,11 @@
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
     "@fontsource/plus-jakarta-sans": "^4.5.9",
+    "@types/react-helmet": "^6.1.5",
     "framer-motion": "^6.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
     "react-icons": "^4.4.0",
     "react-router-dom": "^6.3.0",
     "swiper": "^8.3.2"

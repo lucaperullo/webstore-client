@@ -20,7 +20,7 @@ import {
 } from "@chakra-ui/react";
 import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
 import LikeButton from "lib/components/like-button";
-import Loader from "lib/loader";
+import Loader from "lib/components/loader";
 
 export default function AppDetail() {
   const [state, dispatch] = useStateValue();

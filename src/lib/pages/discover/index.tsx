@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { useStateValue } from "../../../context/stateProvider";
 
 import DiscoverCarousel from "./discoverCarousel";
-import CategorySkeleton from "lib/skeletons";
+import CategorySkeleton from "lib/components/skeletons";
 
 export default function Discover() {
   const [state, dispatch] = useStateValue();

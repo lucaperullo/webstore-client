@@ -9,11 +9,11 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "./index.css";
 
-import Loader from "lib/loader";
+import Loader from "lib/components/loader";
 import { useEffect, useState } from "react";
 import { authorise } from "./guard";
 import { useStateValue } from "./context/stateProvider";
-import CookieBanner from "lib/cookie-banner";
+import CookieBanner from "lib/components/cookie-banner";
 
 const App = () => {
   const [user, setUser] = useState(null);

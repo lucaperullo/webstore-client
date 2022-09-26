@@ -1,4 +1,5 @@
 import { Box, Heading, Text, Button, Image, Link } from "@chakra-ui/react";
+import Title from "lib/components/title";
 import { useNavigate } from "react-router-dom";
 
 export default function Page404() {
@@ -15,6 +16,7 @@ export default function Page404() {
       alignItems="center"
       flexDirection="column"
     >
+      <Title title="404" description="Page not found" />
       <Text fontSize="18px" mt={3} mb={2} fontWeight="600" color="gray.900">
         Page Not Found
       </Text>

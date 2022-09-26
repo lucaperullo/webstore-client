@@ -1,5 +1,5 @@
 import { Box, Button, Flex, SimpleGrid, Text } from "@chakra-ui/react";
-import CookieModal from "lib/cookie-modal";
+import CookieModal from "lib/components/cookie-modal";
 import { useEffect, useState } from "react";
 
 export default function CookieBanner() {

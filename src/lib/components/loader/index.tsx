@@ -1,8 +1,8 @@
 import { Box, Flex, Spinner, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import ScrollDisable from "lib/scrollDisable";
+import ScrollDisable from "lib/components/scrollDisable";
 import { useEffect } from "react";
-import { useStateValue } from "../../context/stateProvider";
+import { useStateValue } from "../../../context/stateProvider";
 import "./style.css";
 export default function Loader() {
   const [{ isLoading }] = useStateValue();

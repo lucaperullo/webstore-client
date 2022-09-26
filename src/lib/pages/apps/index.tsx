@@ -5,7 +5,7 @@ import Category from "lib/components/category";
 import { useStateValue } from "../../../context/stateProvider";
 import { useEffect, useState } from "react";
 import AppsCarousel from "./appsCarousel";
-import CategorySkeleton from "lib/skeletons";
+import CategorySkeleton from "lib/components/skeletons";
 
 export default function Apps() {
   const [state, dispatch] = useStateValue();
