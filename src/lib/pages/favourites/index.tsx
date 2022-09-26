@@ -42,7 +42,7 @@ export default function Favourites() {
 
   return (
     <Container maxW="7xl" pt="8">
-      <Title title="Favourites" description="The apps you love" />
+      <Title title="Webstore | Favourites" description="The apps you love" />
 
       <Flex>
         <Text
