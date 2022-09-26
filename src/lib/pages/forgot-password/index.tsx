@@ -8,6 +8,7 @@ import {
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
+import Title from "lib/components/title";
 
 type ForgotPasswordFormInputs = {
   email: string;
@@ -21,6 +22,7 @@ export default function ForgotPasswordForm(): JSX.Element {
       justify={"center"}
       bg={useColorModeValue("gray.50", "gray.800")}
     >
+      <Title title="Forgot Password" description="Forgot Password" />
       <Stack
         spacing={4}
         w={"full"}

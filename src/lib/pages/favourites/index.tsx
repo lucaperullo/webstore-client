@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import AppCard from "lib/components/app-card";
 import Category from "lib/components/category";
+import Title from "lib/components/title";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useStateValue } from "../../../context/stateProvider";
@@ -41,6 +42,8 @@ export default function Favourites() {
 
   return (
     <Container maxW="7xl" pt="8">
+      <Title title="Favourites" description="The apps you love" />
+
       <Flex>
         <Text
           fontSize={{

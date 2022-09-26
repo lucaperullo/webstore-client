@@ -6,6 +6,7 @@ import { useStateValue } from "../../../context/stateProvider";
 import { useEffect, useState } from "react";
 import AppsCarousel from "./appsCarousel";
 import CategorySkeleton from "lib/components/skeletons";
+import Title from "lib/components/title";
 
 export default function Apps() {
   const [state, dispatch] = useStateValue();
@@ -43,6 +44,7 @@ export default function Apps() {
 
   return (
     <Box as="div" height="100%">
+      <Title title="WebStore | Apps" description="Discover new apps" />
       <Box mb="2">
         <AppsCarousel />
       </Box>

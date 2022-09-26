@@ -23,6 +23,7 @@ import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { BiGame } from "react-icons/bi";
 import GamesCarousel from "./gamesCarousel";
 import CategorySkeleton from "lib/components/skeletons";
+import Title from "lib/components/title";
 
 export default function Games() {
   const [state, dispatch] = useStateValue();
@@ -58,6 +59,7 @@ export default function Games() {
 
   return (
     <Box as="div" height="100%" overflowX="hidden">
+      <Title title="WebStore | Games" description="Discover new games" />
       <Box mb="2">
         <GamesCarousel />
       </Box>
