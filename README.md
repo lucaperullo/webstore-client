@@ -1,35 +1,10 @@
-# vite-react-chakra-starter
+# webstore
 
-This is a project bootstrapped with [`@vitejs/app`](https://vitejs.dev/guide/#scaffolding-your-first-vite-project) (`react-ts`), added with [Chakra UI](https://chakra-ui.com) and [TypeScript](https://www.typescriptlang.org) setup.
+Welcome to webstore! We bring you the best applications, websites, and games, all in one place. With direct access to a variety of top-rated options, you'll never have to search far and wide for the perfect app or game again.
 
-- ⚡ blazing fast dev server and build
-- 🔗 route management added (`react-router-dom` configured)
+This website was built using ReactTS, ChakraUI, the context API, and Swiper. These tools helped us create a seamless and intuitive user experience, so you can easily browse and access the best the web has to offer.
 
-[**Live Demo**](https://vite-react-chakra-starter.sznm.dev/)
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https://github.com/sozonome/vite-react-chakra-starter) [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/sozonome/vite-react-chakra-starter)
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/sozonome/vite-react-chakra-starter)
-
-## Getting Started
-
-You can either click [`Use this template`](https://github.com/sozonome/vite-react-chakra-starter/generate) button on this repository and clone the repo or use npx degit like so:
-
-```bash
-npx degit sozonome/vite-react-chakra-starter <app_name>
-```
-
-Then, run the development server:
-
-```bash
-yarn dev
-```
-
-## Deployment
-
-- build command: `yarn build`
-- output directory: `dist`
-
+Thank you for choosing webstore. We hope you enjoy your time here!
 ## References
 
 - [vite](https://vitejs.dev)
