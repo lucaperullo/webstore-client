@@ -16,22 +16,20 @@ import { useStateValue } from "./context/stateProvider";
 import CookieBanner from "lib/components/cookie-banner";
 
 const App = () => {
-  const [user, setUser] = useState(null);
   const [state, dispatch] = useStateValue();
 
-  const setloggedInUser = () => {
+  const setloggedInUser =async () => {
     dispatch({
       type: "SET_USER",
-      payload: user,
+      payload: await authorise(),
     });
   };
   const start = async () => {
-    await authorise(setUser);
-
     dispatch({
       type: "SET_LOADING",
       payload: false,
     });
+    await setloggedInUser();
   };
 
   useEffect(() => {
@@ -42,9 +40,7 @@ const App = () => {
     start();
   }, []);
 
-  useEffect(() => {
-    setloggedInUser();
-  }, [user]);
+ 
   return (
     <ChakraProvider theme={theme}>
       <Box>

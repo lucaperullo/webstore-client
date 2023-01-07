@@ -1,5 +1,7 @@
 import { useStateValue } from "../../../context/stateProvider";
 import { Navigate } from "react-router-dom";
+import { authorise } from "guard";
+import { useLayoutEffect } from "react";
 
 type PrivateRouteProps = {
   children: React.ReactNode;
@@ -11,11 +13,13 @@ const RequireAuth = ({
   children,
   redirectTo = "/login",
 }: PrivateRouteProps) => {
-  const [state] = useStateValue();
-  // add your own authentication logic here
-  const isAuthenticated = !!state.user;
+const loggedIn = localStorage.getItem("user");
 
-  return isAuthenticated ? (
+
+
+
+
+  return !!loggedIn ? (
     (children as React.ReactElement)
   ) : (
     <Navigate to={redirectTo} />

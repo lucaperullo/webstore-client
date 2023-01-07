@@ -47,7 +47,7 @@ export default function SignIn() {
       body: JSON.stringify(data),
     });
     let { user } = await response.json();
-
+    localStorage.setItem("user", "true");
     if (user) {
       dispatch({
         type: "SET_USER",

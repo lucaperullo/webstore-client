@@ -13,6 +13,7 @@ export default defineConfig({
     alias: {
       lib: resolve(__dirname, "src/lib"),
       routes: resolve(__dirname, "src/routes"),
+      guard: resolve(__dirname, "src/guard"),
     },
   },
 });
