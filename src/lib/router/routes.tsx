@@ -17,6 +17,10 @@ import Favourites from "lib/pages/favourites";
 
 export const routes: Array<PathRouteProps> = [
   {
+    path: "/",
+    element: <Home />,
+  },
+  {
     path: "/login",
     element: <Login />,
   },
@@ -60,10 +64,7 @@ export const routes: Array<PathRouteProps> = [
 ];
 
 export const privateRoutes: Array<PathRouteProps> = [
-  {
-    path: "/",
-    element: <Home />,
-  },
+
   {
     path: "/profile",
     element: <Profile />,
