@@ -1,9 +1,9 @@
 import { Box, Flex, Spinner, Text } from "@chakra-ui/react";
-import { motion } from "framer-motion";
+
 import ScrollDisable from "lib/components/scrollDisable";
-import { useEffect } from "react";
+
 import { useStateValue } from "../../../context/stateProvider";
-import "./style.css";
+
 export default function Loader() {
   const [{ isLoading }] = useStateValue();
 
@@ -24,28 +24,16 @@ export default function Loader() {
       bg="rgba(0,0,0,0.4)"
       backdropFilter={"blur(2px)"}
     >
-      <div className="container">
-        <div className="dot dot-1"></div>
-        <div className="dot dot-2"></div>
-        <div className="dot dot-3"></div>
-      </div>
-
-      <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-        <defs>
-          <filter id="goo">
-            <feGaussianBlur
-              in="SourceGraphic"
-              stdDeviation="10"
-              result="blur"
-            />
-            <feColorMatrix
-              in="blur"
-              mode="matrix"
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -7"
-            />
-          </filter>
-        </defs>
-      </svg>
+    <Spinner
+     transform={"scale(1.5)"}
+      visibility={isLoading ? "visible" : "hidden"}
+        
+        thickness='8px'
+        speed='0.65s'
+        emptyColor='gray.200'
+        color='blue.500'
+        size='xl'
+      />
       <Flex alignItems="baseline">
         <Text
           fontSize={{
