@@ -14,6 +14,14 @@ export default function AppCard({
     path: string;
   };
 }) {
+  const ifTextIsLong = (text: string) => {
+    if (text.length > 15) {
+      return text.slice(0, 15) + "...";
+    } else {
+      return text;
+    }
+  };
+  
   const navigate = useNavigate();
   return (
     <Flex
@@ -21,7 +29,7 @@ export default function AppCard({
       justifyContent="center"
       alignItems="center"
       maxW="90px"
-      overflow={"hidden"}
+      w="100%"
     >
       <Link
         userSelect="none"
@@ -58,8 +66,9 @@ export default function AppCard({
             md: "md",
             lg: "lg",
           }}
+          h="50px"
         >
-          {app?.name}
+          {ifTextIsLong(app?.name)}
         </Text>
         <br />
         <Text>{app?.price}</Text>
