@@ -25,7 +25,7 @@ export default function Loader() {
       bg="rgba(0,0,0,0.4)"
       backdropFilter={"blur(10px)"}
     >
-  <Box position="fixed"
+  <Box position="absolute"
   top="50%"
   left="50%"
   transform="translate(-50%, -50%)"
