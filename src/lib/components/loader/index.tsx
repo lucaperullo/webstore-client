@@ -25,7 +25,12 @@ export default function Loader() {
       bg="rgba(0,0,0,0.4)"
       backdropFilter={"blur(10px)"}
     >
-    <Spinner
+  <Box position="fixed"
+  top="50%"
+  left="50%"
+  transform="translate(-50%, -50%)"
+  >
+  <Spinner
      transform={"scale(1.5)"}
       visibility={isLoading ? "visible" : "hidden"}
         
@@ -52,6 +57,7 @@ export default function Loader() {
           Loading
         </Text>
       </Flex>
+  </Box>
       {isLoading && <ScrollDisable />}
     </Box>
   );
