@@ -40,14 +40,14 @@ export default function AppCard({
         color="gray.900"
         _dark={{ color: "gray.100" }}
         onClick={() => navigate(`/detail/${app.path}/${app._id}`)}
+     
       >
         <Box
           _hover={{
-            transform: "scale(1.05)",
-            filter: "drop-shadow(0px 20px 5px rgba(0, 0, 0, 0.15))",
+                       filter: "drop-shadow(0px 20px 5px rgba(0, 0, 0, 0.15))",
           }}
           transition="all 0.2s ease-in-out"
-          cursor={"pointer"}
+          cursor={`pointer`}
           bgImage={`url(${app.image})`}
           bgPosition="center"
           bgSize="cover"
