@@ -20,7 +20,7 @@ import {
 } from "@chakra-ui/react";
 import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
 import LikeButton from "lib/components/like-button";
-import Loader from "lib/components/loader";
+
 import Title from "lib/components/title";
 
 export default function AppDetail() {
@@ -169,7 +169,7 @@ export default function AppDetail() {
           </SimpleGrid>
         </>
       ) : (
-        <Loader />
+        <></>
       )}
     </Container>
   );

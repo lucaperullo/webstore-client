@@ -68,9 +68,9 @@ export default function Home() {
           {" "}
           <Welcome slide={() => swiperRef.slideNext()} />
         </SwiperSlide>
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <Features />
-        </SwiperSlide>
+        </SwiperSlide> */}
         {/* <SwiperSlide>explore</SwiperSlide> */}
       </Swiper>
     </Box>

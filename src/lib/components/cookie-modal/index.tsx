@@ -23,15 +23,7 @@ export default function CookieModal({
         <ModalHeader>Customize Consent Preferences</ModalHeader>
         <ModalCloseButton />
         <ModalBody borderTop="1px solid">
-          We use cookies to help you navigate efficiently and perform certain
-          functions. You will find detailed information about all cookies under
-          each consent category below. The cookies that are categorized as
-          "Necessary" are stored on your browser as they are essential for
-          enabling the basic functionalities of the site. We also use
-          third-party cookies that help us analyze how you use this website,
-          store your preferences, and provide the content and advertisements
-          that are relevant to you. These cookies will only be stored in your
-          browser with your prior consent.
+        The cookies used on this website are essential for the proper functioning of the site. These cookies are the most basic and are necessary to ensure that the website works as intended. By using this website, you consent to the use of these essential cookies.
         </ModalBody>
         <ModalFooter>
           <Button onClick={onClose}>Close</Button>

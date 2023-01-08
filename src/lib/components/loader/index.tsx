@@ -9,20 +9,21 @@ export default function Loader() {
 
   return (
     <Box
+    cursor={"wait"}
       visibility={isLoading ? "visible" : "hidden"}
       transition="all 0.5s ease-in-out"
       opacity={isLoading ? 1 : 0}
-      h="100vh"
+      h="200vh"
       position="fixed"
       zIndex={999}
-      w="100%"
+      w="200%"
       flexDir="column"
       overflow="hidden"
       display="flex"
       justifyContent="center"
       alignItems="center"
       bg="rgba(0,0,0,0.4)"
-      backdropFilter={"blur(2px)"}
+      backdropFilter={"blur(10px)"}
     >
     <Spinner
      transform={"scale(1.5)"}
@@ -42,6 +43,11 @@ export default function Loader() {
             lg: "xl",
           }}
           fontWeight={700}
+          userSelect="none"
+          color={{
+            _dark: "gray.100",
+            _light: "gray.900",
+          }}
         >
           Loading
         </Text>

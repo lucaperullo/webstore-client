@@ -11,14 +11,6 @@ export default function CookieBanner() {
   const onClose = () => setShowModal(false);
   const onOpen = () => setShowModal(true);
 
-  // useEffect(() => {
-  //   document.body.style.overflow = "hidden";
-  //   return () => {
-  //     // enable scrolling on unmount
-  //     document.body.style.overflow = "unset";
-  //   };
-  // }, []);
-
   return (
     <Box
       position="fixed"
@@ -67,9 +59,8 @@ export default function CookieBanner() {
                 md: "md",
               }}
             >
-              We use cookies to enhance your browsing experience, serve
-              personalized ads or content to support the project. By clicking
-              "Accept", you consent to our use of cookies.
+              We use cookies to enhance your browsing experience. By using this site, you agree to our use of cookies.
+             
             </Text>
           </Flex>
           <Flex
@@ -91,7 +82,7 @@ export default function CookieBanner() {
                 localStorage.setItem("cookieBanner", "false");
               }}
             >
-              Accept
+              I understand
             </Button>
 
             <Button colorScheme="blue" variant="outline" onClick={onOpen}>

@@ -43,9 +43,7 @@ export default function AppCard({
      
       >
         <Box
-          _hover={{
-                       filter: "drop-shadow(0px 20px 5px rgba(0, 0, 0, 0.15))",
-          }}
+         
           transition="all 0.2s ease-in-out"
           cursor={`pointer`}
           bgImage={`url(${app.image})`}
