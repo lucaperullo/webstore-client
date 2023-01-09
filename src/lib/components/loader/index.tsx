@@ -35,7 +35,7 @@ export default function Loader() {
       display="flex"
       justifyContent="center"
       alignItems="center"
-      bg="rgba(0,0,0,0.4)"
+      bg="rgba(0,0,0,0.3)"
       backdropFilter={"blur(10px)"}
     >
   <Flex 
@@ -75,7 +75,7 @@ mt="-10px"
         thickness='6px'
         speed='0.65s'
        
-        color='purple.600'
+        color='purple.500'
         size='xl'
       />
         <Spinner
@@ -98,8 +98,8 @@ mt="-10px"
         
         thickness='11px'
         speed='0.45s'
-       
-        color='gray.100'
+       emptyColor="cyan.100"
+        color='cyan.100'
         size='xl'
       />
       <Flex alignItems="baseline">
