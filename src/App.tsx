@@ -44,7 +44,7 @@ const App = () => {
   return (
     <ChakraProvider theme={theme}>
       <Box>
-        <Loader />
+     <Loader />
 
         <Router>
           <Navbar>
