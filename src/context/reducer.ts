@@ -1,6 +1,6 @@
 export const initialState = {
   user: null,
-  isLoading: false,
+  isLoading: true,
   isHome: false,
   favourites: [],
 };
