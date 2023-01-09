@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 import ScrollDisable from "lib/components/scrollDisable";
 import { useEffect } from "react";
-
+import "./styles.css"
 import { useStateValue } from "../../../context/stateProvider";
 
 export default function Loader() {
@@ -37,14 +37,36 @@ export default function Loader() {
       alignItems="center"
       bg="rgba(0,0,0,0.3)"
       backdropFilter={"blur(10px)"}
+
     >
+    <Box className="page">
+    <Box className="animation-container">
+  <Flex className="lightning-container">
+    <Box className="lightning white" />
+    <Box className="lightning red" />
+  </Flex>
+  <Flex className="boom-container">
+    <Box className="shape circle big white" />
+    <Box className="shape circle white" />
+    <Box className="shape triangle big yellow" />
+    <Box className="shape disc white" />
+    <Box className="shape triangle blue" />
+  </Flex>
+  <Flex className="boom-container second">
+    <Box className="shape circle big white" />
+    <Box className="shape circle white" />
+    <Box className="shape disc white" />
+    <Box className="shape triangle blue" />
+  </Flex>
+</Box>
+    </Box>
   <Flex 
   flexDir="column"
   alignItems="center"
 
   >
-    <Spinner
-    
+    {/* <Spinner
+    old spinner
     height="70px"
      width="70px"
        position="absolute"
@@ -101,7 +123,7 @@ mt="-10px"
        emptyColor="cyan.100"
         color='cyan.100'
         size='xl'
-      />
+      /> */}
       <Flex alignItems="baseline">
         <Text
         display="flex"
