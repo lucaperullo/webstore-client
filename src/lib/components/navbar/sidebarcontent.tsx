@@ -137,6 +137,14 @@ export const SidebarContent = ({
     }
   }, [query, priceHightoLow]);
 
+  useEffect(() => {
+
+    if (query === "") {
+      setSearching(false);
+    }
+    
+  }, [query]);
+
   return (
     <Box
       transition="3s ease"
