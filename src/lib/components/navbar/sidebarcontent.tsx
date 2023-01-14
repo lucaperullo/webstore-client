@@ -132,7 +132,7 @@ export const SidebarContent = ({
     }
   };
   useEffect(() => {
-    if (priceHightoLow !== "null") {
+    if (priceHightoLow !== "null" || query !== "") {
       searchStuff();
     }
   }, [query, priceHightoLow]);
